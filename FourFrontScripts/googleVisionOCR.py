@@ -26,12 +26,13 @@ def OCR(filePath):
     for f in fileList:
         nameParts = f.split('.')
         outFilePath = outputPath + nameParts[0] + ".json"
+        print(outFilePath)
 
         if nameParts[1] == "jpg":
             if not exists(outFilePath):
-                imagePath = imagePath + "/" + f
+                currentImagePath = imagePath + "/" + f
 
-                with io.open(imagePath, 'rb') as image_file:
+                with io.open(currentImagePath, 'rb') as image_file:
                     content = image_file.read()
 
                 image = types.Image(content=content)
