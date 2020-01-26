@@ -6,6 +6,7 @@ import dataTemplate
 
 from os import listdir, mkdir
 from os.path import isfile, join
+from copy import deepcopy
 
 def main(argv):
     filePath = sys.argv[1]
@@ -16,10 +17,13 @@ def main(argv):
     tempPath = filePath + "\\tempFiles\\"
     if not os.path.isdir(tempPath):
         os.mkdir(tempPath)
+
+    emptyData = dataTemplate.data_template
     
     fileList = [f for f in listdir(jsonPath) if isfile(join(jsonPath, f))]
     for f in fileList:
-        data = dataTemplate.data_template
+        print(f)
+        data = deepcopy(emptyData)
         dates = dateExtraction.extractDates(filePath + "\\GoogleVisionData\\" + f)
                 
         for d in dates:
