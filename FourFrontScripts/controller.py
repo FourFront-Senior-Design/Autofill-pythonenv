@@ -22,7 +22,6 @@ def main(argv):
     
     fileList = [f for f in listdir(jsonPath) if isfile(join(jsonPath, f))]
     for f in fileList:
-        print(f)
         data = deepcopy(emptyData)
         dates = dateExtraction.extractDates(filePath + "\\GoogleVisionData\\" + f)
                 
