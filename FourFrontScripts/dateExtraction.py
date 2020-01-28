@@ -44,11 +44,12 @@ def replace_non_digits(input_string):
     input_string = input_string.replace('l', '1')
     input_string = input_string.replace('I', '1')
     input_string = input_string.replace('B', '8')
+    input_string = input_string.replace('S', '5')
     return input_string
 
 def extractDates(filePath):
     # regex to select dates
-    re_dates = r'(JAN(?:UARY)?|FEB(?:RUARY)?|MAR(?:CH)?|APR(?:IL)?|MAY|JUN(?:E)?|JUL(?:Y)?|AUG(?:UST)?|SEP(?:TEMBER)?|OCT(?:OBER)?|NOV(?:EMBER)?|DEC(?:EMBER)?)\s+([\doOlI]{1,2})[,.]?\s+([\doOlI]{4})'
+    re_dates = r'(JAN(?:UARY)?|FEB(?:RUARY)?|MAR(?:CH)?|APR(?:IL)?|MAY|JUN(?:E)?|JUL(?:Y)?|AUG(?:UST)?|SEP(?:TEMBER)?|OCT(?:OBER)?|NOV(?:EMBER)?|DEC(?:EMBER)?)\s+([\doOlIBS]{1,2})[,.]?\s+([\doOlIBS]{4})'
 
     dates = list()
 
