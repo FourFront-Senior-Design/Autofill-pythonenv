@@ -31,7 +31,6 @@ def main(argv):
         # Add autofill modules here
 
         outputFilePath = tempPath + f.split(".")[0] + ".tmp"
-        #print(outputFilePath)
         
         file = open(outputFilePath, "w+")
         

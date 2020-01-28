@@ -26,7 +26,6 @@ def OCR(filePath):
     for f in fileList:
         nameParts = f.split('.')
         outFilePath = outputPath + nameParts[0] + ".json"
-        print(outFilePath)
 
         if nameParts[1] == "jpg":
             if not exists(outFilePath):
