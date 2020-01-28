@@ -75,6 +75,9 @@ def extractDates(filePath):
 
         # replace non-digits in day
         day = replace_non_digits(day)
+        # add a leading zero for single digits
+        if len(day) == 1:
+            day = '0' + day
 
         # replace non-digits in year
         year = replace_non_digits(year)
