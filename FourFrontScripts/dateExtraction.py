@@ -98,6 +98,11 @@ def extractDates(filePath):
     if len_dates == 0:
         pass
     elif len_dates % 2 == 0:
+        # For each pair, verify that birthDate < deathDate here
+        # Use:
+        # from datetime import datetime as dt
+        # deathDate = dt.strptime("10/20/1920", "%m/%d/%y")
+        # birthDate = dt.strptime("10/15/1990", "%m/%d/%y")
         for i in range(len_dates):
             out_data[dkl[i]] = dates[i]
     else:
