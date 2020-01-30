@@ -16,8 +16,8 @@ def OCR(filePath):
     
     client = vision.ImageAnnotatorClient()
 
-    imagePath = filePath + "/ReferencedImages/"
-    outputPath = filePath + "/GoogleVisionData/"
+    imagePath = filePath + "\\ReferencedImages\\"
+    outputPath = filePath + "\\GoogleVisionData\\"
     
     if not os.path.isdir(outputPath):
         os.mkdir(outputPath)
@@ -29,7 +29,7 @@ def OCR(filePath):
 
         if nameParts[1] == "jpg":
             if not exists(outFilePath):
-                currentImagePath = imagePath + "/" + f
+                currentImagePath = imagePath + "\\" + f
 
                 with io.open(currentImagePath, 'rb') as image_file:
                     content = image_file.read()
