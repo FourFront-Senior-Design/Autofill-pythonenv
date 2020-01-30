@@ -36,6 +36,8 @@ def main(argv):
         
         for i in data:
             file.write(i + ":" + data[i] + "\n")
+
+        file.close()
                     
 if __name__ == "__main__":
     main(sys.argv)
