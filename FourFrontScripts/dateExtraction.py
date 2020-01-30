@@ -49,6 +49,8 @@ def replace_non_digits(input_string):
     return input_string
 
 def extractDates(filePath):
+    out_data = {}
+
     # regex to select dates
     re_dates = r'(JAN(?:UARY)?|FEB(?:RUARY)?|MAR(?:CH)?|APR(?:IL)?|MAY|JUN(?:E)?|JUL(?:Y)?|AUG(?:UST)?|SEP(?:TEMBER)?|OCT(?:OBER)?|NOV(?:EMBER)?|DEC(?:EMBER)?)\s+([\doOlIBSQ]{1,2})[,.]?\s+([\doOlIBSQ]{4})'
 
@@ -63,6 +65,11 @@ def extractDates(filePath):
     # print(filename + ':')
     with open(filePath, 'r') as file:
         data = json.load(file)
+
+    extracted_text = data.get('textAnnotations')
+    if extracted_text is None:
+        return out_data
+
     extracted_text = data.get('textAnnotations')[0].get('description')
     # it_dates is an iterator over the search results
     it_dates = re.finditer(re_dates, extracted_text)
@@ -89,8 +96,6 @@ def extractDates(filePath):
         # depending on their database date field settings
         new_date = str(month + '/' + day + '/' + year)
         dates.append(new_date)
-        
-    out_data = {}
 
     # put dates into out_data
     # if there is only one date, it goes into the DeathDate field, not the BirthDate field
