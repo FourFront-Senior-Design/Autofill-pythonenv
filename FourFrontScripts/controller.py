@@ -34,6 +34,8 @@ def main(argv):
         
         file = open(outputFilePath, "w+")
         
+        file.write("")
+        
         for i in data:
             file.write(i + ":" + data[i] + "\n")
 
