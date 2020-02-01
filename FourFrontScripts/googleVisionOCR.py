@@ -9,9 +9,21 @@ from google.cloud.vision import types
 from google.protobuf.json_format import MessageToJson
 
 def OCR(filePath):
-    # This will change to something else in time. Ideally we have the credentials file somewhere secure
-    # and on the network so that any PCs to which we are deployed to can run our program.
-    keyPath = "C:\Python\FourFrontScripts\credentials\FourFront Senior Design-162aa2f1754e.json"
+    # Find the credentials file
+    credentialPath = "C:\\Python\\FourFrontScripts\\credentials\\"
+    credentialList = [f for f in listdir(credentialPath) if isfile(join(credentialPath, f))]
+    
+    if len(credentialList) > 1:
+        print("TOO MANY CREDENTIALS!!!")
+        return
+    
+    nameParts = credentialList[0].split('.')
+    
+    print(nameParts)
+    if nameParts[1] != "json":
+        print("CREDENTIALS NOT CORRECT!!!")
+    
+    keyPath = credentialPath + credentialList[0]
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=keyPath
     
     client = vision.ImageAnnotatorClient()

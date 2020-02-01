@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import json
 import re
 from os import listdir
 from os.path import isfile, join, splitext
@@ -48,7 +47,7 @@ def replace_non_digits(input_string):
     input_string = input_string.replace('Q', '0')
     return input_string
 
-def extractDates(filePath):
+def extractDates(filePath, data):
     out_data = {}
 
     # regex to select dates
@@ -60,11 +59,7 @@ def extractDates(filePath):
     dkl = ['BirthDate', 'DeathDate', 'BirthDateS_D', 'DeathDateS_D',
            'BirthDateS_D_2', 'DeathDateS_D_2', 'BirthDateS_D_3', 'DeathDateS_D_3',
            'BirthDateS_D_4', 'DeathDateS_D_4', 'BirthDateS_D_5', 'DeathDateS_D_5',
-           'BirthDateS_D_6', 'DeathDateS_D_6']
-
-    # print(filename + ':')
-    with open(filePath, 'r') as file:
-        data = json.load(file)
+           'BirthDateS_D_6', 'DeathDateS_D_6']  
 
     extracted_text = data.get('textAnnotations')
     if extracted_text is None:

@@ -3,6 +3,7 @@ import sys
 import googleVisionOCR
 import dateExtraction
 import dataTemplate
+import json
 
 from os import listdir, mkdir
 from os.path import isfile, join
@@ -22,11 +23,17 @@ def main(argv):
     
     fileList = [f for f in listdir(jsonPath) if isfile(join(jsonPath, f))]
     for f in fileList:
-        data = deepcopy(emptyData)
-        dates = dateExtraction.extractDates(filePath + "\\GoogleVisionData\\" + f)
+        recordData = deepcopy(emptyData)
+        
+        currentFilePath = filePath + "\\GoogleVisionData\\" + f
+        
+        with open(currentFilePath, 'r') as file:
+            jsonData = json.load(file)
+        
+        dates = dateExtraction.extractDates(currentFilePath, jsonData)
                 
         for d in dates:
-            data[d] = dates[d]
+            recordData[d] = dates[d]
         
         # Add autofill modules here
 
@@ -36,8 +43,8 @@ def main(argv):
         
         file.write("")
         
-        for i in data:
-            file.write(i + ":" + data[i] + "\n")
+        for i in recordData:
+            file.write(i + ":" + recordData[i] + "\n")
 
         file.close()
                     
