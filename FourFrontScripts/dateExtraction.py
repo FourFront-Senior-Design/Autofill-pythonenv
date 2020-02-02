@@ -5,6 +5,7 @@ import re
 from os import listdir
 from os.path import isfile, join, splitext
 import copy
+from datetime import datetime as dt
 
 import dataTemplate
 
@@ -47,6 +48,21 @@ def replace_non_digits(input_string):
     input_string = input_string.replace('Q', '0')
     return input_string
 
+def updateDateOrder(dates):
+    len_dates = len(dates)
+    # set len_dates to largest even number
+    if len_dates % 2 != 0:
+        len_dates -= 1
+    for i in range(0, len_dates, 2):
+        firstDate = dt.strptime(dates[i], "%m/%d/%Y")
+        secondDate = dt.strptime(dates[i+1], "%m/%d/%Y")
+        if secondDate < firstDate:
+            # swap dates
+            temp = dates[i]
+            dates[i] = dates[i+1]
+            dates[i+1] = temp
+    return dates
+
 def extractDates(filePath, data):
     out_data = {}
 
@@ -86,29 +102,21 @@ def extractDates(filePath, data):
         # replace non-digits in year
         year = replace_non_digits(year)
 
-        # NOTE: We may not need the '/' separator here if we are populating the database
-        # with this string, i.e. concatenated date such as 01012000 might work here
-        # depending on their database date field settings
         new_date = str(month + '/' + day + '/' + year)
         dates.append(new_date)
 
     # put dates into out_data
     # if there is only one date, it goes into the DeathDate field, not the BirthDate field
     len_dates = len(dates)
-    if len_dates == 0:
-        pass
-    elif len_dates % 2 == 0:
-        # For each pair, verify that birthDate < deathDate here
-        # Use:
-        # from datetime import datetime as dt
-        # deathDate = dt.strptime("10/20/1920", "%m/%d/%y")
-        # birthDate = dt.strptime("10/15/1990", "%m/%d/%y")
-        for i in range(len_dates):
-            out_data[dkl[i]] = dates[i]
-    else:
-        for j in range(len_dates - 1):
-            out_data[dkl[j]] = dates[j]
-            # this enters the last odd date into the DeathDate field (dkl[len_dates]), not BirthDate field
-        out_data[dkl[len_dates]] = dates[len_dates - 1]
+    if len_dates != 0:
+        ordered_dates = updateDateOrder(dates)
+        if len_dates % 2 == 0:
+            for i in range(len_dates):
+                out_data[dkl[i]] = ordered_dates[i]
+        else:
+            for j in range(len_dates - 1):
+                out_data[dkl[j]] = ordered_dates[j]
+                # this enters the last odd date into the DeathDate field (dkl[len_dates]), not BirthDate field
+            out_data[dkl[len_dates]] = ordered_dates[len_dates - 1]
     
     return out_data
