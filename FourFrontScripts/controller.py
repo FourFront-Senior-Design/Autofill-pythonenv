@@ -2,6 +2,7 @@ import os
 import sys
 import googleVisionOCR
 import dateExtraction
+import rankExtraction
 import dataTemplate
 import json
 
@@ -34,6 +35,11 @@ def main(argv):
                 
         for d in dates:
             recordData[d] = dates[d]
+            
+        ranks = rankExtraction.extractRanks(currentFilePath, jsonData)
+        
+        for r in ranks:
+            recordData[r] = ranks[r]
         
         # Add autofill modules here
 
