@@ -36,10 +36,10 @@ def main(argv):
         for d in dates:
             recordData[d] = dates[d]
             
-        ranks = rankExtraction.extractRanks(currentFilePath, jsonData)
+        #ranks = rankExtraction.extractRanks(currentFilePath, jsonData)
         
-        for r in ranks:
-            recordData[r] = ranks[r]
+        #for r in ranks:
+        #    recordData[r] = ranks[r]
         
         # Add autofill modules here
 
