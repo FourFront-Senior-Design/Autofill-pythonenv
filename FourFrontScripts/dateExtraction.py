@@ -54,13 +54,16 @@ def updateDateOrder(dates):
     if len_dates % 2 != 0:
         len_dates -= 1
     for i in range(0, len_dates, 2):
-        firstDate = dt.strptime(dates[i], "%m/%d/%Y")
-        secondDate = dt.strptime(dates[i+1], "%m/%d/%Y")
-        if secondDate < firstDate:
-            # swap dates
-            temp = dates[i]
-            dates[i] = dates[i+1]
-            dates[i+1] = temp
+        try:
+            firstDate = dt.strptime(dates[i], "%m/%d/%Y")
+            secondDate = dt.strptime(dates[i+1], "%m/%d/%Y")
+            if secondDate < firstDate:
+                # swap dates
+                temp = dates[i]
+                dates[i] = dates[i+1]
+                dates[i+1] = temp
+        except:
+            pass
     return dates
 
 def extractDates(filePath, data):
