@@ -12,6 +12,7 @@ from copy import deepcopy
 
 def main(argv):
     filePath = sys.argv[1]
+    #uprightFlatTypeList = sys.argv[2]
 
     googleVisionOCR.OCR(filePath)
     
@@ -22,6 +23,7 @@ def main(argv):
 
     emptyData = dataTemplate.data_template
     
+    # Do we need to sort fileList?
     fileList = [f for f in listdir(jsonPath) if isfile(join(jsonPath, f))]
     for f in fileList:
         recordData = deepcopy(emptyData)
@@ -29,7 +31,10 @@ def main(argv):
         currentFilePath = filePath + "\\GoogleVisionData\\" + f
         
         with open(currentFilePath, 'r') as file:
-            jsonData = json.load(file)
+            try:
+                jsonData = json.load(file)
+            except:
+                pass
         
         dates = dateExtraction.extractDates(currentFilePath, jsonData)
                 
