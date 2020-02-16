@@ -13,8 +13,7 @@ from copy import deepcopy
 def main(argv):
     filePath = sys.argv[1]
 
-#### UNCOMMENT THIS AFTER TESTING ####
-    #googleVisionOCR.OCR(filePath)
+    googleVisionOCR.OCR(filePath)
     
     jsonPath = filePath + "\\GoogleVisionData\\"
     tempPath = filePath + "\\tempFiles\\"
