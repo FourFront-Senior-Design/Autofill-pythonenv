@@ -24,13 +24,14 @@ def main(argv):
     
     # Open "recordTypeList.tmp" file and read into list, strip at ends
     recordTypeList = []
-    with open(tempPath + "\\recordTypeList.tmp", 'r') as file:
+    with open(filePath + "\\recordTypeList.tmp", 'r') as file:
         recordTypeList = file.readlines()
     recordTypeList = [line.strip() for line in recordTypeList]
     # recordTypeList is now a list containing the arguments to be sent to each
     # extraction module/script
 
     for line in recordTypeList:
+        print(line)
         recordData = deepcopy(emptyData)
 
         # set up file path/names

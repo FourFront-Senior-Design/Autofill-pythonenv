@@ -104,9 +104,11 @@ def extractDates(*args):
     extractedText = list()
     combinedText = str()
     for jsonData in extractedData:
-        # this specifically grabs only the text annotations in the json data
-        text = jsonData.get('textAnnotations')[0].get('description')
-        extractedText.append(text)
+        print(jsonData)
+        if jsonData.get('textAnnotations') is not None:
+            # this specifically grabs only the text annotations in the json data
+            text = jsonData.get('textAnnotations')[0].get('description')
+            extractedText.append(text)
     # combine text into one string
     if len(extractedText) == 1:
         combinedText = extractedText[0]
@@ -149,7 +151,7 @@ def extractDates(*args):
                 out_data[dkl[j]] = ordered_dates[j]
                 # this enters the last odd date into the DeathDate field (dkl[len_dates]), not BirthDate field
             out_data[dkl[len_dates]] = ordered_dates[len_dates - 1]
-    
+
     # this returns a list of key/value pairs for the date fields only
     # it is the controller's responsibility to package these into the larger key/value pairs
     return out_data
