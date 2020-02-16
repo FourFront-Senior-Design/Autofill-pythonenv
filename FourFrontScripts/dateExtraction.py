@@ -6,6 +6,7 @@ from os import listdir
 from os.path import isfile, join, splitext
 import copy
 from datetime import datetime as dt
+import json
 
 import dataTemplate
 
@@ -66,7 +67,7 @@ def updateDateOrder(dates):
             pass
     return dates
 
-def extractDates(filePath, data):
+def extractDates(*args):
     out_data = {}
 
     # regex to select dates
@@ -78,18 +79,44 @@ def extractDates(filePath, data):
     dkl = ['BirthDate', 'DeathDate', 'BirthDateS_D', 'DeathDateS_D',
            'BirthDateS_D_2', 'DeathDateS_D_2', 'BirthDateS_D_3', 'DeathDateS_D_3',
            'BirthDateS_D_4', 'DeathDateS_D_4', 'BirthDateS_D_5', 'DeathDateS_D_5',
-           'BirthDateS_D_6', 'DeathDateS_D_6']  
+           'BirthDateS_D_6', 'DeathDateS_D_6']
 
-    extracted_text = data.get('textAnnotations')
-    if extracted_text is None:
-        return out_data
 
-    extracted_text = data.get('textAnnotations')[0].get('description')
-    # it_dates is an iterator over the search results
-    it_dates = re.finditer(re_dates, extracted_text)
+
+    extractedData = list()
+    files = str()
+    # input args is a tuple, and args[0] contains all the input file paths as a string
+    # split into a files list, with each item as a string of the input file path
+    if (args[0]):
+        files = args[0].split()
+
+    # iterate through input files and append data to extractedData
+    # files should contain only one item for flat markers, and two items for uprights
+    for f in files:
+        with open(f, 'r') as file:
+            try:
+                data = json.load(file)
+                extractedData.append(data)
+            except:
+                pass
+    
+    # get text annotations and combine into one string
+    extractedText = list()
+    combinedText = str()
+    for jsonData in extractedData:
+        # this specifically grabs only the text annotations in the json data
+        text = jsonData.get('textAnnotations')[0].get('description')
+        extractedText.append(text)
+    # combine text into one string
+    if len(extractedText) == 1:
+        combinedText = extractedText[0]
+    elif len(extractedText) == 2:
+        combinedText = extractedText[0] + '\n' + extractedText[1]
+
+    #it_dates is an regex iterator over the combined text string
+    it_dates = re.finditer(re_dates, combinedText)
     dates = list()
     for date in it_dates:
-        # print(date.groups())
         month = date.groups()[0]
         day = date.groups()[1]
         year = date.groups()[2]
@@ -105,6 +132,7 @@ def extractDates(filePath, data):
         # replace non-digits in year
         year = replace_non_digits(year)
 
+        # format date
         new_date = str(month + '/' + day + '/' + year)
         dates.append(new_date)
 
@@ -122,4 +150,6 @@ def extractDates(filePath, data):
                 # this enters the last odd date into the DeathDate field (dkl[len_dates]), not BirthDate field
             out_data[dkl[len_dates]] = ordered_dates[len_dates - 1]
     
+    # this returns a list of key/value pairs for the date fields only
+    # it is the controller's responsibility to package these into the larger key/value pairs
     return out_data
