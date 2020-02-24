@@ -92,13 +92,13 @@ def extractDates(*args):
 
     # iterate through input files and append data to extractedData
     # files should contain only one item for flat markers, and two items for uprights
-    for f in files:
-        with open(f, 'r') as file:
-            try:
-                data = json.load(file)
-                extractedData.append(data)
-            except:
-                pass
+    try:
+        for f in files:
+            with open(f, 'r') as file:
+                    data = json.load(file)
+                    extractedData.append(data)
+    except:
+        pass
     
     # get text annotations and combine into one string
     extractedText = list()
