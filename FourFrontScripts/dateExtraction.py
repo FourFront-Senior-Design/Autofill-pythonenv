@@ -11,7 +11,7 @@ import json
 import dataTemplate
 
 
-def parse_args_to_file_list(args):
+def args_to_file_list(args):
     """Returns list of file names from singleton tuple of file names"""
     # input args is a tuple, and args[0] contains all the input file paths as a string
     # split into a files list, with each item as a string of the input file path
@@ -171,7 +171,7 @@ def update_date_order(dates):
 def extractDates(*args):
     """Returns key/value pairs of dates from .json files (given file names)"""
     # set up list containing file names
-    files = parse_args_to_file_list(args)
+    files = args_to_file_list(args)
 
     # files should contain only one item for flat markers, and two items for uprights
     # extractedData list contains the full json data in this format ["full_json_for_first", "full_json_for_second"]
