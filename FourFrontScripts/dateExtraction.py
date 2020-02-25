@@ -67,6 +67,14 @@ def updateDateOrder(dates):
             pass
     return dates
 
+
+def parse_args_to_file_list(args):
+    # input args is a tuple, and args[0] contains all the input file paths as a string
+    # split into a files list, with each item as a string of the input file path
+    if (args[0]):
+        return args[0].split()
+
+
 def extractDates(*args):
     out_data = {}
 
@@ -81,14 +89,11 @@ def extractDates(*args):
            'BirthDateS_D_4', 'DeathDateS_D_4', 'BirthDateS_D_5', 'DeathDateS_D_5',
            'BirthDateS_D_6', 'DeathDateS_D_6']
 
-
-
     extractedData = list()
+
+    # set up list containing file names
     files = str()
-    # input args is a tuple, and args[0] contains all the input file paths as a string
-    # split into a files list, with each item as a string of the input file path
-    if (args[0]):
-        files = args[0].split()
+    files = parse_args_to_file_list(args)
 
     # iterate through input files and append data to extractedData
     # files should contain only one item for flat markers, and two items for uprights
@@ -99,7 +104,7 @@ def extractDates(*args):
                     extractedData.append(data)
     except:
         pass
-    
+
     # get text annotations and combine into one string
     extractedText = list()
     combinedText = str()
