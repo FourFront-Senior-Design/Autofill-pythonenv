@@ -7,7 +7,7 @@ from copy import deepcopy
 import googleVisionOCR
 import dataTemplate
 
-## Add extraction module imports here
+# Add extraction module imports here
 import dateExtraction
 import rankExtraction
 
@@ -60,7 +60,7 @@ def main(argv):
             args = arg_list[0] + " " + arg_list[1]
 
         # call extraction modules
-        dates = dateExtraction.extractDates(args)
+        dates = dateExtraction.extract_dates(args)
         # add more calls to extraction modules here
 
         # fill record_data

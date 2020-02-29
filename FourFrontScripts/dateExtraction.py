@@ -15,44 +15,44 @@ def args_to_file_list(args):
     """Returns list of file names from singleton tuple of file names"""
     # input args is a tuple, and args[0] contains all the input file paths as a string
     # split into a files list, with each item as a string of the input file path
-    if (args[0]):
+    if args[0]:
         return args[0].split()
 
 
 def get_json_data(files):
     """Returns list of full json data from list of json file names"""
-    # iterate through input files and append data to extractedData
-    extractedData = list()
+    # iterate through input files and append data to extracted_data
+    extracted_data = list()
     try:
         for f in files:
             with open(f, 'r') as file:
                 data = json.load(file)
-                extractedData.append(data)
+                extracted_data.append(data)
     except:
         pass
-    return extractedData
+    return extracted_data
 
 
-def get_text_annotations(extractedData):
+def get_text_annotations(extracted_data):
     """Returns list of extracted text annotations from list of full json data"""
-    extractedText = list()
-    for jsonData in extractedData:
+    extracted_text = list()
+    for jsonData in extracted_data:
         if jsonData.get('textAnnotations') is not None:
             # this specifically grabs only the text annotations in the json data
             text = jsonData.get('textAnnotations')[0].get('description')
-            extractedText.append(text)
-    return extractedText
+            extracted_text.append(text)
+    return extracted_text
 
 
-def merge_text(extractedText):
+def merge_text(extracted_text):
     """Returns merged single string from list of two strings"""
-    combinedText = str()
+    combined_text = str()
     # combine text into one string
-    if len(extractedText) == 1:
-        combinedText = extractedText[0]
-    elif len(extractedText) == 2:
-        combinedText = extractedText[0] + '\n' + extractedText[1]
-    return combinedText
+    if len(extracted_text) == 1:
+        combined_text = extracted_text[0]
+    elif len(extracted_text) == 2:
+        combined_text = extracted_text[0] + '\n' + extracted_text[1]
+    return combined_text
 
 
 def parse_regex_dates(it_dates):
@@ -156,9 +156,9 @@ def update_date_order(dates):
         len_dates -= 1
     for i in range(0, len_dates, 2):
         try:
-            firstDate = dt.strptime(dates[i], "%m/%d/%Y")
-            secondDate = dt.strptime(dates[i+1], "%m/%d/%Y")
-            if secondDate < firstDate:
+            first_date = dt.strptime(dates[i], "%m/%d/%Y")
+            second_date = dt.strptime(dates[i+1], "%m/%d/%Y")
+            if second_date < first_date:
                 # swap dates
                 temp = dates[i]
                 dates[i] = dates[i+1]
@@ -168,27 +168,29 @@ def update_date_order(dates):
     return dates
 
 
-def extractDates(*args):
+def extract_dates(*args):
     """Returns key/value pairs of dates from .json files (given file names)"""
     # set up list containing file names
     files = args_to_file_list(args)
 
     # files should contain only one item for flat markers, and two items for uprights
-    # extractedData list contains the full json data in this format ["full_json_for_first", "full_json_for_second"]
-    extractedData = get_json_data(files)
+    # extracted_data list contains the full json data in this format ["full_json_for_first", "full_json_for_second"]
+    extracted_data = get_json_data(files)
 
     # get text annotations and combine into one string
-    extractedText = get_text_annotations(extractedData)
+    extracted_text = get_text_annotations(extracted_data)
 
     # merge text into combined text string
-    combinedText = merge_text(extractedText)
+    combined_text = merge_text(extracted_text)
 
     # compile regex to select dates
+    # TODO(jd): re-write this long regular expression using
+    #           re.verbose, and add comments for each sub-expression
     re_dates = r'(JAN(?:UARY)?|FEB(?:RUARY)?|MAR(?:CH)?|APR(?:IL)?|MAY|JUN(?:E)?|JUL(?:Y)?|AUG(?:UST)?|SEP(?:TEMBER)?|OCT(?:OBER)?|NOV(?:EMBER)?|DEC(?:EMBER)?)\s+([\doOlIBSQ]{1,2})[,.]?\s+([\doOlIBSQ]{4})'
     regex_dates = re.compile(re_dates)
 
     # it_dates is a regex iterator over the combined text string
-    it_dates = re.finditer(regex_dates, combinedText)
+    it_dates = re.finditer(regex_dates, combined_text)
 
     # parse dates from regex iterator
     dates = parse_regex_dates(it_dates)
