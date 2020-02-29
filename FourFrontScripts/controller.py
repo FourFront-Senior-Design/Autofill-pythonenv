@@ -1,82 +1,85 @@
 import os
 import sys
+#from os import listdir, mkdir
+#from os.path import isfile, join
+#import json
+from copy import deepcopy
 import googleVisionOCR
+import dataTemplate
+
+## Add extraction module imports here
 import dateExtraction
 import rankExtraction
-import dataTemplate
-import json
 
-from os import listdir, mkdir
-from os.path import isfile, join
-from copy import deepcopy
 
 def main(argv):
-    filePath = sys.argv[1]
+    # Get file path
+    file_path = sys.argv[1]
 
-    googleVisionOCR.OCR(filePath)
+    googleVisionOCR.OCR(file_path)
     
-    jsonPath = filePath + "\\GoogleVisionData\\"
-    tempPath = filePath + "\\tempFiles\\"
-    if not os.path.isdir(tempPath):
-        os.mkdir(tempPath)
+    json_path = file_path + "\\GoogleVisionData\\"
+    temp_path = file_path + "\\tempFiles\\"
+    if not os.path.isdir(temp_path):
+        os.mkdir(temp_path)
 
-    emptyData = dataTemplate.data_template
+    empty_data = dataTemplate.data_template
     
     # Open "recordTypeList.tmp" file and read into list, strip at ends
-    recordTypeList = []
-    with open(filePath + "\\recordTypeList.tmp", 'r') as file:
-        recordTypeList = file.readlines()
-    recordTypeList = [line.strip() for line in recordTypeList]
+    record_type_list = []
+    with open(file_path + "\\recordTypeList.tmp", 'r') as file:
+        record_type_list = file.readlines()
+    record_type_list = [line.strip() for line in record_type_list]
     # recordTypeList is now a list containing the arguments to be sent to each
     # extraction module/script
 
-    for line in recordTypeList:
+    for line in record_type_list:
         print(line)
-        recordData = deepcopy(emptyData)
+        record_data = deepcopy(empty_data)
 
         # set up file path/names
-        filePath1 = filePath2 = ""
-        fileList = line.split()
+        file_path1 = file_path2 = ""
+        file_list = line.split()
 
         # set up arguments (file path/names)
-        argList = []
-        if len(fileList) == 1:
-            filePath1 = jsonPath + fileList[0] + ".json"
-            argList.append(filePath1)
-        if len(fileList) == 2:
-            filePath1 = jsonPath + fileList[0] + ".json"
-            argList.append(filePath1)
-            filePath2 = jsonPath + fileList[1] + ".json"
-            argList.append(filePath2)
+        arg_list = []
+        if len(file_list) == 1:
+            file_path1 = json_path + file_list[0] + ".json"
+            arg_list.append(file_path1)
+        if len(file_list) == 2:
+            file_path1 = json_path + file_list[0] + ".json"
+            arg_list.append(file_path1)
+            file_path2 = json_path + file_list[1] + ".json"
+            arg_list.append(file_path2)
         
-        # pass argList to extraction modules
+        # pass arg_list to extraction modules
         args = ""
-        if len(argList) == 1:
-            args = argList[0]
-        elif len(argList) == 2:
-            args = argList[0] + " " + argList[1]
+        if len(arg_list) == 1:
+            args = arg_list[0]
+        elif len(arg_list) == 2:
+            args = arg_list[0] + " " + arg_list[1]
 
         # call extraction modules
         dates = dateExtraction.extractDates(args)
         # add more calls to extraction modules here
 
-        # fill recordData
+        # fill record_data
         for d in dates:
-            recordData[d] = dates[d]
+            record_data[d] = dates[d]
         # add more extraction fill loops here
 
-
-        # write output recordData to .tmp files 
-        outputFilePath = tempPath + fileList[0] + ".tmp"
+        # write output record_data to .tmp files
+        output_file_path = temp_path + file_list[0] + ".tmp"
         
-        file = open(outputFilePath, "w+")
+        file = open(output_file_path, "w+")
         
         file.write("")
         
-        for i in recordData:
-            file.write(i + ":" + recordData[i] + "\n")
+        for i in record_data:
+            file.write(i + ":" + record_data[i] + "\n")
     
         file.close()
-                    
+
+
 if __name__ == "__main__":
     main(sys.argv)
