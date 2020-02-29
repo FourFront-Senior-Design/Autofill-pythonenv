@@ -23,14 +23,16 @@ def extract(args):
 
     # Do not call any extraction scripts if args is empty
     if args:
-        # BEGIN EXTRACTION CALLS
-        # NOTE: order matters here if any extraction scripts have key overlap
-        # NOTE: Extraction scripts should return key/value pairs (dictionary)
+        ### BEGIN EXTRACTION CALLS ###
+        # NOTE: Extraction scripts should only return key/value pairs for extracted data
+        # NOTE: Dictionaries from extraction scripts should NOT have any blank or
+        #       missing values in key/value pairs (i.e. there should be no key overlap
+        #       between the various extractions scripts)
         # NOTE: Add additional extraction script calls here
         # FORMAT: record_data.update(<script_file_name.script_function_name>(args))
         record_data.update(dateExtraction.extract_dates(args))
 
-        # END EXTRACTION CALLS
+        ### END EXTRACTION CALLS ###
     return record_data
 
 
