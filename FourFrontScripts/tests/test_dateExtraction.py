@@ -1,10 +1,11 @@
-import pytest
+import sys
+sys.path.append("C:/Python/FourFrontScripts")
 import dateExtraction
 import json
 
 
 def test_args_to_file_list1():
-    """parse_args_to_file_list should return list of single file name"""
+    """args_to_file_list should return list of single file name"""
     file1 = "C:\\SomeSection\\GoogleVisionData\\some_file.json"
     args = (file1, )
     files = dateExtraction.args_to_file_list(args)
@@ -14,7 +15,7 @@ def test_args_to_file_list1():
 
 
 def test_args_to_file_list2():
-    """parse_args_to_file_list should return list of file names"""
+    """args_to_file_list should return list of file names"""
     file1 = "C:\\SomeSection\\GoogleVisionData\\some_file1.json"
     file2 = "C:\\SomeSection\\GoogleVisionData\\some_file2.json"
     args = (file1 + " " + file2, )
