@@ -11,28 +11,6 @@ import json
 import dataTemplate
 
 
-def args_to_file_list(args):
-    """Returns list of file names from singleton tuple of file names"""
-    # input args is a tuple, and args[0] contains all the input file paths as a string
-    # split into a files list, with each item as a string of the input file path
-    if args[0]:
-        return args[0].split()
-
-
-def get_json_data(files):
-    """Returns list of full json data from list of json file names"""
-    # iterate through input files and append data to extracted_data
-    extracted_data = list()
-    try:
-        for f in files:
-            with open(f, 'r') as file:
-                data = json.load(file)
-                extracted_data.append(data)
-    except:
-        pass
-    return extracted_data
-
-
 def get_text_annotations(extracted_data):
     """Returns list of extracted text annotations from list of full json data"""
     extracted_text = list()
@@ -168,16 +146,9 @@ def update_date_order(dates):
     return dates
 
 
-def extract_dates(*args):
+def extract_dates(extracted_data):
     """Returns key/value pairs of dates from .json files (given file names)"""
-    # set up list containing file names
-    files = args_to_file_list(args)
-
-    # files should contain only one item for flat markers, and two items for uprights
-    # extracted_data list contains the full json data in this format ["full_json_for_first", "full_json_for_second"]
-    extracted_data = get_json_data(files)
-
-    # get text annotations and combine into one string
+        # get text annotations and combine into one string
     extracted_text = get_text_annotations(extracted_data)
 
     # merge text into combined text string
