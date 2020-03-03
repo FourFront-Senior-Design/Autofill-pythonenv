@@ -2,7 +2,7 @@ import os
 import sys
 #from os import listdir, mkdir
 #from os.path import isfile, join
-#import json
+import json
 from copy import deepcopy
 import googleVisionOCR
 import dataTemplate
@@ -20,13 +20,9 @@ def extract(args):
     # access empty data template
     # deepcopy here since we do not want to modify the single empty_data dictionary
     record_data = deepcopy(dataTemplate.data_template)
-    
-    # set up list containing file names
-    files = args_to_file_list(args)
 
-    # files should contain only one item for flat markers, and two items for uprights
-    # extracted_data list contains the full json data in this format ["full_json_for_first", "full_json_for_second"]
-    extracted_data = get_json_data(files)
+    # extracted_data contains the json data from the files in the current record
+    extracted_data = get_json_data(args)
 
     # Do not call any extraction scripts if args is empty
     if args:
@@ -91,20 +87,13 @@ def setup_args(file_list, json_path):
     # args is: 'full_path\\filename1.json full_path\\filename2.json'
     # filename2 is only present for uprights
     return args
-    
-def args_to_file_list(args):
-    """Returns list of file names from singleton tuple of file names"""
-    # input args is a tuple, and args[0] contains all the input file paths as a string
-    # split into a files list, with each item as a string of the input file path
-    if args[0]:
-        return args[0].split()
 
 def get_json_data(files):
     """Returns list of full json data from list of json file names"""
     # iterate through input files and append data to extracted_data
     extracted_data = list()
     try:
-        for f in files:
+        for f in files.split():
             with open(f, 'r') as file:
                 data = json.load(file)
                 extracted_data.append(data)
