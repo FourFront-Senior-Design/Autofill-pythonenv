@@ -6,10 +6,61 @@ from os import listdir
 from os.path import isfile, join, splitext
 import copy
 from datetime import datetime as dt
+import json
 
 import dataTemplate
 
+
+def get_text_annotations(extracted_data):
+    """Returns list of extracted text annotations from list of full json data"""
+    extracted_text = list()
+    for jsonData in extracted_data:
+        if jsonData.get('textAnnotations') is not None:
+            # this specifically grabs only the text annotations in the json data
+            text = jsonData.get('textAnnotations')[0].get('description')
+            extracted_text.append(text)
+    return extracted_text
+
+
+def merge_text(extracted_text):
+    """Returns merged single string from list of two strings"""
+    combined_text = str()
+    # combine text into one string
+    if len(extracted_text) == 1:
+        combined_text = extracted_text[0]
+    elif len(extracted_text) == 2:
+        combined_text = extracted_text[0] + '\n' + extracted_text[1]
+    return combined_text
+
+
+def parse_regex_dates(it_dates):
+    """Returns list of dates from regex iterator on dates"""
+    dates = list()
+    for date in it_dates:
+        month = date.groups()[0]
+        day = date.groups()[1]
+        year = date.groups()[2]
+        # convert month to numerical value
+        month = month_to_number(month)
+
+        # replace non-digits in day
+        day = replace_non_digits(day)
+
+        # add a leading zero for single digits
+        if len(day) == 1:
+            day = '0' + day
+
+        # replace non-digits in year
+        year = replace_non_digits(year)
+
+        # format date
+        new_date = str(month + '/' + day + '/' + year)
+        dates.append(new_date)
+    return dates
+
+
 def month_to_number(month_string):
+    """Converts the name of a month to the month number"""
     m = ''
     if month_string == 'JAN' or month_string == 'JANUARY':
         m = '01'
@@ -39,6 +90,7 @@ def month_to_number(month_string):
 
 
 def replace_non_digits(input_string):
+    """Replaces non-digits in known dates with digits"""
     input_string = input_string.replace('O', '0')
     input_string = input_string.replace('o', '0')
     input_string = input_string.replace('l', '1')
@@ -48,71 +100,21 @@ def replace_non_digits(input_string):
     input_string = input_string.replace('Q', '0')
     return input_string
 
-def updateDateOrder(dates):
-    len_dates = len(dates)
-    # set len_dates to largest even number
-    if len_dates % 2 != 0:
-        len_dates -= 1
-    for i in range(0, len_dates, 2):
-        try:
-            firstDate = dt.strptime(dates[i], "%m/%d/%Y")
-            secondDate = dt.strptime(dates[i+1], "%m/%d/%Y")
-            if secondDate < firstDate:
-                # swap dates
-                temp = dates[i]
-                dates[i] = dates[i+1]
-                dates[i+1] = temp
-        except:
-            pass
-    return dates
 
-def extractDates(filePath, data):
+def populate_output_dict(dates):
+    """Returns dictionary of key/value pairs for dates (database field names/dates)"""
+    # set up date key list (dkl) and out_data dictionary
     out_data = {}
-
-    # regex to select dates
-    re_dates = r'(JAN(?:UARY)?|FEB(?:RUARY)?|MAR(?:CH)?|APR(?:IL)?|MAY|JUN(?:E)?|JUL(?:Y)?|AUG(?:UST)?|SEP(?:TEMBER)?|OCT(?:OBER)?|NOV(?:EMBER)?|DEC(?:EMBER)?)\s+([\doOlIBSQ]{1,2})[,.]?\s+([\doOlIBSQ]{4})'
-
-    dates = list()
-
-    # set up date key list (dkl)
     dkl = ['BirthDate', 'DeathDate', 'BirthDateS_D', 'DeathDateS_D',
            'BirthDateS_D_2', 'DeathDateS_D_2', 'BirthDateS_D_3', 'DeathDateS_D_3',
            'BirthDateS_D_4', 'DeathDateS_D_4', 'BirthDateS_D_5', 'DeathDateS_D_5',
-           'BirthDateS_D_6', 'DeathDateS_D_6']  
-
-    extracted_text = data.get('textAnnotations')
-    if extracted_text is None:
-        return out_data
-
-    extracted_text = data.get('textAnnotations')[0].get('description')
-    # it_dates is an iterator over the search results
-    it_dates = re.finditer(re_dates, extracted_text)
-    dates = list()
-    for date in it_dates:
-        # print(date.groups())
-        month = date.groups()[0]
-        day = date.groups()[1]
-        year = date.groups()[2]
-        # convert month to numerical value
-        month = month_to_number(month)
-
-        # replace non-digits in day
-        day = replace_non_digits(day)
-        # add a leading zero for single digits
-        if len(day) == 1:
-            day = '0' + day
-
-        # replace non-digits in year
-        year = replace_non_digits(year)
-
-        new_date = str(month + '/' + day + '/' + year)
-        dates.append(new_date)
+           'BirthDateS_D_6', 'DeathDateS_D_6']
 
     # put dates into out_data
     # if there is only one date, it goes into the DeathDate field, not the BirthDate field
     len_dates = len(dates)
     if len_dates != 0:
-        ordered_dates = updateDateOrder(dates)
+        ordered_dates = update_date_order(dates)
         if len_dates % 2 == 0:
             for i in range(len_dates):
                 out_data[dkl[i]] = ordered_dates[i]
@@ -121,5 +123,53 @@ def extractDates(filePath, data):
                 out_data[dkl[j]] = ordered_dates[j]
                 # this enters the last odd date into the DeathDate field (dkl[len_dates]), not BirthDate field
             out_data[dkl[len_dates]] = ordered_dates[len_dates - 1]
-    
     return out_data
+
+
+def update_date_order(dates):
+    """Places two date strings in oldest to more recent order"""
+    len_dates = len(dates)
+    # set len_dates to largest even number
+    if len_dates % 2 != 0:
+        len_dates -= 1
+    for i in range(0, len_dates, 2):
+        try:
+            first_date = dt.strptime(dates[i], "%m/%d/%Y")
+            second_date = dt.strptime(dates[i+1], "%m/%d/%Y")
+            if second_date < first_date:
+                # swap dates
+                temp = dates[i]
+                dates[i] = dates[i+1]
+                dates[i+1] = temp
+        except:
+            pass
+    return dates
+
+
+def extract_dates(extracted_data):
+    """Returns key/value pairs of dates from .json files (given file names)"""
+        # get text annotations and combine into one string
+    extracted_text = get_text_annotations(extracted_data)
+
+    # merge text into combined text string
+    combined_text = merge_text(extracted_text)
+
+    # compile regex to select dates
+    # TODO(jd): re-write this long regular expression using
+    #           re.verbose, and add comments for each sub-expression
+    re_dates = r'(JAN(?:UARY)?|FEB(?:RUARY)?|MAR(?:CH)?|APR(?:IL)?|MAY|JUN(?:E)?|JUL(?:Y)?|AUG(?:UST)?|SEP(?:TEMBER)?|OCT(?:OBER)?|NOV(?:EMBER)?|DEC(?:EMBER)?)\s+([\doOlIBSQ]{1,2})[,.]?\s+([\doOlIBSQ]{4})'
+    regex_dates = re.compile(re_dates)
+
+    # it_dates is a regex iterator over the combined text string
+    it_dates = re.finditer(regex_dates, combined_text)
+
+    # parse dates from regex iterator
+    dates = parse_regex_dates(it_dates)
+
+    # populate output dictionary of key/value pairs (database field name / date)
+    out_data = populate_output_dict(dates)
+
+    # this returns a list of key/value pairs for the date fields only
+    # it is the controller's responsibility to package these into the full key/value pairs dictionary
+    return out_data
+
