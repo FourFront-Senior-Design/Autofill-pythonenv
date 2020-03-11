@@ -153,3 +153,32 @@ def test_setup_args_spaces():
     test_args = controller.setup_args(file_list, json_path)
     assert test_args == args
 
+
+def test_get_json_data():
+    files = 'C:\\Python\\FourFrontScripts\\tests\\resources\\json_path\\test1.json ' \
+            'C:\\Python\\FourFrontScripts\\tests\\resources\\json_path\\test2.json'
+    extracted_data = [{'test1': {'id': 1,
+                                 'name': 'one',
+                                 'status': True}},
+                      {'test2': {'id': 2,
+                                 'name': 'two',
+                                 'status': False}},
+                      ]
+    test_extracted_data = controller.get_json_data(files)
+    assert test_extracted_data == extracted_data
+
+
+def test_get_json_data_path_with_spaces():
+    files = 'C:\\Python\\FourFrontScripts\\tests\\resources\\json path with spaces\\test1.json ' \
+            'C:\\Python\\FourFrontScripts\\tests\\resources\\json path with spaces\\test2.json'
+    extracted_data = [{'test1': {'id': 1,
+                                 'name': 'one',
+                                 'status': True}},
+                      {'test2': {'id': 2,
+                                 'name': 'two',
+                                 'status': False}},
+                      ]
+    test_extracted_data = controller.get_json_data(files)
+    assert test_extracted_data == extracted_data
+    assert True
+
