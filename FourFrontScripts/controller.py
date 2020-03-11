@@ -93,7 +93,11 @@ def get_json_data(files):
     # iterate through input files and append data to extracted_data
     extracted_data = list()
     try:
-        for f in files.split():
+        # split at first '.json ' in files string, max 1 time
+        flist = files.split('.json ', 1)
+        # split removed the .json on the first element, add it back
+        flist[0] += '.json'
+        for f in flist:
             with open(f, 'r') as file:
                 data = json.load(file)
                 extracted_data.append(data)
