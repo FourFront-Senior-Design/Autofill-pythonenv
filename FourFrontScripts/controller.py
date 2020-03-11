@@ -95,8 +95,10 @@ def get_json_data(files):
     try:
         # split at first '.json ' in files string, max 1 time
         flist = files.split('.json ', 1)
-        # split removed the .json on the first element, add it back
-        flist[0] += '.json'
+        # check for .json extension on first item in list
+        if not flist[0].endswith('.json'):
+            # add .json extension
+            flist[0] += '.json'
         for f in flist:
             with open(f, 'r') as file:
                 data = json.load(file)
