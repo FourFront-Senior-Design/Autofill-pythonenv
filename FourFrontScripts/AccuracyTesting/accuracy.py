@@ -3,6 +3,9 @@ class Accuracy:
         self.autofill = autofill
         self.access = accessDb
 
+    '''
+    Calculates the accuracy using edit distance
+    '''
     def levenshteinDistance(self, word1, word2):
         if word1 == None:
             word1 = ""

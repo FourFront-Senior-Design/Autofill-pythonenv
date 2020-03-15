@@ -49,6 +49,10 @@ class OCRData:
         self.usedFront = []
         self.usedBack = []
 
+    '''
+    GetFullText merges the text on the front 
+    and back of the headstone
+    '''
     def getFullText(self):
         front = self.jsonDataFront['textAnnotations'][0]['description']
         back = ""
@@ -56,6 +60,10 @@ class OCRData:
             back = self.jsonDataBack['textAnnotations'][0]['description']
         return front + back
 
+    '''
+    Gets the words from the ocr data. Makes sure that if it
+    is a month, it converts it to a number
+    '''
     def getWordList(self):
         textsFront = self.jsonDataFront['textAnnotations']
         textsBack = None
@@ -71,6 +79,11 @@ class OCRData:
             wordList.append(month_to_number(textsBack[i]['description']))
         return wordList
 
+    '''
+    Gets the coordinates of the word. The usedFront and usedBack is
+    used to help navigate the word correctly incase it occurs multiple
+    times
+    '''
     def getCoordinatesLocation(self, word):
         textsFront = self.jsonDataFront['textAnnotations']
         textsBack = None

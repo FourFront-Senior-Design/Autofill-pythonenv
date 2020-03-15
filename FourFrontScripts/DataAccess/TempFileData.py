@@ -1,7 +1,10 @@
 import os
 
 class TempFileData:
-
+    '''
+    Reads all the temp files in the given location
+    Each temp file data is a dictionary
+    '''
     def __init__(self, tempFilesPath):
         self.__path = tempFilesPath
         self.__records = []

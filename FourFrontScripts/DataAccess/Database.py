@@ -26,6 +26,14 @@ class AccessDatabase:
     def getMarkerType(self, i):
         return self._record[i]['MarkerType']
 
+    '''
+    Gets the words in the person object in the record
+    
+    Depending on the number of words in each column it 
+    creates the columnPerWord array that will be used to
+    get the column in which the word belongs to in the
+    getColumnNames function
+    '''
     def getFilledPersonData(self, i):
         data = self._record[i]
         keys = dataTemplate.data_template.keys()
@@ -49,6 +57,9 @@ class AccessDatabase:
                 filledPerson.append(val)
         return filledPerson
 
+    '''
+    Gets the column in which the word exists
+    '''
     def getColumnName(self, i, word):
         col = -1
         data = self.getRecord(i)

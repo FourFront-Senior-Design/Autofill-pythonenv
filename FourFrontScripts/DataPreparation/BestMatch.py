@@ -1,8 +1,16 @@
+'''
+Creates the best match between the ocr words and the database words
+to minimize the edit distance.
+This will help label the OCR words to the correct column in the database
+'''
 import queue
 
 class BestMatch:
     INF = 1000 * 1000 * 1000
 
+    '''
+    Creates the graph of size n x n
+    '''
     def __init__(self, ocrData, accessData):
         self.ocr = ocrData
         self.access = accessData
@@ -24,6 +32,9 @@ class BestMatch:
                 temp.append(dist)
             self.graph.append(temp)
 
+    '''
+    The weight of the edges are in terms of edit distance
+    '''
     def __levenshteinDistance(self, word1, word2):
         if word1 == None:
             word1 = ""
@@ -44,6 +55,9 @@ class BestMatch:
             distances = newDistances
         return distances[-1]
 
+    '''
+    Implementing the min-cost max flow algorithm to get the best match
+    '''
     def __minCostMaxFlow(self):
         n = len(self.graph)
         m = n*2 + 2
@@ -111,6 +125,11 @@ class BestMatch:
 
         return answer
 
+    '''
+    Running the min cost - max flow algorithm and converting the
+    answer map the word in the access database to the word 
+    in the ocr
+    '''
     def create(self):
         answer = self.__minCostMaxFlow()
         length = len(self.graph)

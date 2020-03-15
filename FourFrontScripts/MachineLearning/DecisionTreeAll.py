@@ -9,9 +9,11 @@ import numpy as np
 class DecisionTreeAll:
     _dataset = r'C:/Python/FourFrontScripts/TestData/data.csv'
 
+    # Reads the data
     def __init__(self):
         self._dataframe = pd.read_csv(self._dataset, engine='python')
 
+    # Converts the columms into categorical variables
     def __preprocessing(self):
         self.__marker = preprocessing.LabelEncoder()
         self.__loc = preprocessing.LabelEncoder()
@@ -20,20 +22,25 @@ class DecisionTreeAll:
         self._dataframe['ImageLocation'] = self.__loc.fit_transform(self._dataframe['ImageLocation'])
         self._dataframe['category'] = self.__category.fit_transform(self._dataframe['category'])
 
+    # Splits the data into training and testing datasets
     def __trainTestSplit(self):
         x = self._dataframe[["markerType", "ImageLocation", "x1", "y1", "x2", "y2", "x3", "y3", "x4", "y4"]]
         y = self._dataframe['category']
         self.__x_train,self.__x_test,self.__y_train,self.__y_test=train_test_split(x,y,test_size=0.1, random_state=2)
 
+    # Makes the decision tree
     def __makeModel(self):
         self.__dt = DecisionTreeClassifier(max_depth = 10, random_state = 1)
         self.__dt.fit(self.__x_train, self.__y_train)
 
+    # Internal Use Only: Used to get the accuracy of the model
     def __getAccuracy(self):
         pred = self.__dt.predict(self.__x_test)
         acc = accuracy_score(self.__y_test, pred)
         #print("Accuracy of DecisionTreeAll: ", str(acc))
 
+    # Gets the markerType, imageLoc(front/back) and coordinates
+    # to predict the column in which the word would belong
     def Predict(self, markerType, imageLoc, coordinates):
         self.__preprocessing()
         self.__trainTestSplit()
