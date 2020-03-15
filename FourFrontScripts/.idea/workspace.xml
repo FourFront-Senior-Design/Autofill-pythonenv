@@ -2,16 +2,60 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a8043c0-ec91-42c5-96ef-48592c28d3bd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataPrep/AccessDatabase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataPrep/BestMatch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataPrep/OCR.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataPrep/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DataPrep/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ML/DecisionTree_Names.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ML/DecisionTrees.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ML/scatterplot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataPreparation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MachineLearning/DecisionTreeAll.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MachineLearning/DecisionTreeNames.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MachineLearning/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MachineLearning/scatterplot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPrep/AccessDatabase.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPrep/BestMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreparation/BestMatch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPrep/OCR.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/OCRData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPrep/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/AccuracyTesting/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPrep/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataPrep/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPreparation/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML/DecisionTree_Names.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML/DecisionTrees.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML/scatterplot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/AccessDatabase.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/AutofillData.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/TempFileData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/accuracy.py" beforeDir="false" afterPath="$PROJECT_DIR$/AccuracyTesting/accuracy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/dateAccuracy.py" beforeDir="false" afterPath="$PROJECT_DIR$/AccuracyTesting/dateAccuracy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/AccuracyTesting/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/markerTypesAccuracy.py" beforeDir="false" afterPath="$PROJECT_DIR$/AccuracyTesting/markerTypesAccuracy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accuracyResults.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/accuracyResults.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-25_14-13-35_000.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-25_14-13-35_000.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_13-50-51_910.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_13-50-51_910.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_13-53-03_934.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_13-53-03_934.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_16-36-57_185.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_16-36-57_185.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_16-49-16_263.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_16-49-16_263.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_16-49-24_264.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_16-49-24_264.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_16-55-00_304.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_16-55-00_304.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_16-55-08_305.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_16-55-08_305.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_16-55-17_306.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_16-55-17_306.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_16-57-33_321.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_16-57-33_321.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_16-57-50_323.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_16-57-50_323.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_17-17-16_469.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_17-17-16_469.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_17-17-23_470.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_17-17-23_470.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-26_17-32-33_588.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-26_17-32-33_588.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-27_14-45-40_087.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-27_14-45-40_087.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-27_14-45-45_088.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-27_14-45-45_088.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-28_11-48-28_029.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-28_11-48-28_029.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-28_14-49-56_924.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-28_14-49-56_924.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/2019-06-28_15-27-47_195.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/2019-06-28_15-27-47_195.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-05_10-38-38_032.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-05_10-38-38_032.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-05_10-41-00_038.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-05_10-41-00_038.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-05_11-14-25_104.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-05_11-14-25_104.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-05_11-28-25_154.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-05_11-28-25_154.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-05_11-46-47_220.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-05_11-46-47_220.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-05_12-43-58_366.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-05_12-43-58_366.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-06_12-23-49_399.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-06_12-23-49_399.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-06_18-25-23_505.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-06_18-25-23_505.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-07_10-18-40_371.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-07_10-18-40_371.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-07_13-43-42_250.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-07_13-43-42_250.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/A2019-06-07_13-47-41_867.data" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/results/A2019-06-07_13-47-41_867.data" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,29 +78,32 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="csv" value="10" />
+          <entry key="csv" value="21" />
+          <entry key="data" value="11" />
           <entry key="groovy" value="1" />
-          <entry key="py" value="423" />
+          <entry key="json" value="2" />
+          <entry key="py" value="582" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="10" />
-          <entry key="Python" value="423" />
+          <entry key="JSON" value="2" />
+          <entry key="PLAIN_TEXT" value="32" />
+          <entry key="Python" value="582" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="21" />
-          <entry key="dummy" value="31" />
-          <entry key="py" value="11677" />
+          <entry key="dummy" value="88" />
+          <entry key="py" value="14071" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="31" />
-          <entry key="Python" value="11698" />
+          <entry key="PLAIN_TEXT" value="88" />
+          <entry key="Python" value="14092" />
         </counts>
       </usages-collector>
     </session>
@@ -64,14 +111,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DataPrep/OCR.py">
+        <entry file="file://$PROJECT_DIR$/AccuracyTesting/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="863">
-              <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-                <marker date="1584126665941" expanded="true" signature="1866:2415" ph="..." />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -85,6 +128,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>print</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -94,14 +142,10 @@
         <option value="$PROJECT_DIR$/date_extraction.py" />
         <option value="$PROJECT_DIR$/Testing/autofillData.py" />
         <option value="$PROJECT_DIR$/Testing/acessDatabase.py" />
-        <option value="$PROJECT_DIR$/Testing/AutofillData.py" />
         <option value="$PROJECT_DIR$/Testing/DateAccuracy.py" />
-        <option value="$PROJECT_DIR$/Testing/markerTypesAccuracy.py" />
         <option value="$PROJECT_DIR$/Testing/accuracy.py" />
         <option value="$PROJECT_DIR$/controller.py" />
         <option value="$PROJECT_DIR$/dateExtraction.py" />
-        <option value="$PROJECT_DIR$/Testing/main.py" />
-        <option value="$PROJECT_DIR$/Testing/dateAccuracy.py" />
         <option value="$PROJECT_DIR$/Testing/AccessDatabase.py" />
         <option value="$PROJECT_DIR$/Data Prep/__init__.py" />
         <option value="$PROJECT_DIR$/Data Prep/AccessDatabase.py" />
@@ -110,11 +154,24 @@
         <option value="$PROJECT_DIR$/DataPrep/BestMatch.py" />
         <option value="$PROJECT_DIR$/DataPrep/AccessDatabase.py" />
         <option value="$PROJECT_DIR$/DataPrep/OCR.py" />
-        <option value="$PROJECT_DIR$/ML/scatterplot.py" />
         <option value="$PROJECT_DIR$/ML/DecisionTree.py" />
-        <option value="$PROJECT_DIR$/ML/DecisionTrees.py" />
         <option value="$PROJECT_DIR$/ML/DecisionTree_Names.py" />
         <option value="$PROJECT_DIR$/DataPrep/main.py" />
+        <option value="$PROJECT_DIR$/ML/scatterplot.py" />
+        <option value="$PROJECT_DIR$/ML/DecisionTrees.py" />
+        <option value="$PROJECT_DIR$/ML/test.py" />
+        <option value="$PROJECT_DIR$/ML/DecisionTreeNames.py" />
+        <option value="$PROJECT_DIR$/ML/DecisionTreeAll.py" />
+        <option value="$PROJECT_DIR$/DataPreparation/AccessDatabase.py" />
+        <option value="$PROJECT_DIR$/MachineLearning/DecisionTreeAll.py" />
+        <option value="$PROJECT_DIR$/AccessData/AccessDatabase.py" />
+        <option value="$PROJECT_DIR$/DataAccess/Database.py" />
+        <option value="$PROJECT_DIR$/Testing/AutofillData.py" />
+        <option value="$PROJECT_DIR$/Testing/markerTypesAccuracy.py" />
+        <option value="$PROJECT_DIR$/Testing/dateAccuracy.py" />
+        <option value="$PROJECT_DIR$/Testing/main.py" />
+        <option value="$PROJECT_DIR$/TestData/data.csv" />
+        <option value="$PROJECT_DIR$/DataPreparation/main.py" />
       </list>
     </option>
   </component>
@@ -140,7 +197,7 @@
             <path>
               <item name="FourFrontScripts" type="b2602c69:ProjectViewProjectNode" />
               <item name="FourFrontScripts" type="462c0819:PsiDirectoryNode" />
-              <item name="DataPrep" type="462c0819:PsiDirectoryNode" />
+              <item name="AccuracyTesting" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -162,11 +219,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Python\FourFrontScripts\DataAccess" />
+      <recent name="C:\Python\FourFrontScripts\ML" />
       <recent name="C:\Python\FourFrontScripts\Data Prep" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Python\FourFrontScripts\DataPrep" />
+      <recent name="C:\Python\FourFrontScripts\DataAccess" />
+      <recent name="C:\Python\FourFrontScripts\TestData" />
+      <recent name="C:\Python\FourFrontScripts\AccessDatabase" />
       <recent name="C:\Python\FourFrontScripts\Testing" />
+      <recent name="C:\Python\FourFrontScripts\DataPrep" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -181,28 +243,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.DecisionTree_Names">
-    <configuration name="DecisionTree" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="FourFrontScripts" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ML" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Python\FourFrontScripts\ML\DecisionTree_Names.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.main">
     <configuration name="DecisionTree_Names" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="FourFrontScripts" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -215,7 +256,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ML/DecisionTree_Names.py" />
+      <option name="SCRIPT_NAME" value="C:\Python\FourFrontScripts\ML\DecisionTreeNames.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -236,7 +277,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ML/DecisionTrees.py" />
+      <option name="SCRIPT_NAME" value="C:\Python\FourFrontScripts\ML\DecisionTreeAll.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -245,7 +286,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="FourFrontScripts" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -253,11 +294,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DataPrep" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DataPreparation" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DataPrep/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DataPreparation/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -287,20 +328,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="FourFrontScripts" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ML" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ML/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.main (1)" />
       <item itemvalue="Python.scatterplot" />
-      <item itemvalue="Python.DecisionTree" />
       <item itemvalue="Python.DecisionTrees" />
       <item itemvalue="Python.DecisionTree_Names" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.scatterplot" />
         <item itemvalue="Python.DecisionTree_Names" />
         <item itemvalue="Python.DecisionTrees" />
-        <item itemvalue="Python.DecisionTree" />
-        <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.scatterplot" />
       </list>
     </recent_temporary>
   </component>
@@ -330,13 +392,13 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15699404" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20982143" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13256955" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21440262" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.400982" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
@@ -377,37 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/markerTypesAccuracy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/AutofillData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/AccessDatabase.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dateExtraction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -415,36 +446,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataPrep/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/accuracy.py">
+    <entry file="file://$PROJECT_DIR$/controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="23" selection-end-column="28" />
+        <state relative-caret-position="442">
+          <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/main.py">
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pandas/core/frame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        <state relative-caret-position="121">
+          <caret line="2767" selection-start-line="2767" selection-end-line="2767" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ML/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="29" lean-forward="true" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tempFiles/2019-06-25_14-13-35_000.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tempFiles/2019-06-26_13-50-51_910.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tempFiles/2019-06-26_13-53-03_934.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tempFiles/2019-06-26_16-36-57_185.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tempFiles/2019-06-26_16-49-16_263.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tempFiles/2019-06-26_16-49-24_264.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tempFiles/2019-06-26_16-55-00_304.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tempFiles/2019-06-26_16-55-08_305.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tempFiles/2019-06-26_16-55-17_306.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tempFiles/2019-06-26_16-57-33_321.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/results/2019-06-25_14-13-35_000.data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/results/2019-06-26_13-50-51_910.data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/results/2019-06-26_13-53-03_934.data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/results/2019-06-26_16-36-57_185.data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/results/2019-06-26_16-49-16_263.data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/results/2019-06-26_16-49-24_264.data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/results/2019-06-26_16-55-00_304.data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/results/2019-06-26_16-55-08_305.data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/results/2019-06-26_16-55-17_306.data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/results/2019-06-26_16-57-33_321.data">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccuracyTesting/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataPreparation/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataPreparation/AccessDatabase.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/dateAccuracy.py">
+    <entry file="file://$PROJECT_DIR$/DataAccess/OCRData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+        <state relative-caret-position="1037">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <marker date="1584126665941" expanded="true" signature="1866:2415" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataPrep/BestMatch.py">
+    <entry file="file://$PROJECT_DIR$/DataAccess/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataTemplate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="561">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataAccess/Database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataPreparation/BestMatch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
           <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
           <folding>
             <marker date="1584065267900" expanded="true" signature="60:804" ph="..." />
@@ -454,78 +586,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/accuracyResults.csv">
+    <entry file="file://$PROJECT_DIR$/DataAccess/TempFileData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccuracyTesting/accuracy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccuracyTesting/dateAccuracy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccuracyTesting/markerTypesAccuracy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/accuracyResults.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataPrep/AccessDatabase.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="62" column="58" selection-start-line="62" selection-start-column="58" selection-end-line="62" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <marker date="1584121005701" expanded="true" signature="765:1949" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ML/scatterplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="38" />
-          <folding>
-            <element signature="e#20#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataTemplate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="10" column="10" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataPrep/data.csv">
+    <entry file="file://$PROJECT_DIR$/MachineLearning/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/DecisionTrees.py">
+    <entry file="file://$PROJECT_DIR$/MachineLearning/scatterplot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="43" column="80" selection-start-line="43" selection-start-column="80" selection-end-line="43" selection-end-column="80" />
+        <state relative-caret-position="204">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/data.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="62" selection-start-column="62" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataPreparation/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#46#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ML/DecisionTree_Names.py">
+    <entry file="file://$PROJECT_DIR$/MachineLearning/DecisionTreeNames.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/DecisionTreeAll.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="true" />
+            <marker date="1584229826105" expanded="true" signature="241:329" ph="..." />
+            <marker date="1584229826105" expanded="true" signature="399:405" ph="..." />
+            <marker date="1584229826105" expanded="true" signature="431:440" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataPrep/main.py">
+    <entry file="file://$PROJECT_DIR$/AccuracyTesting/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataPrep/OCR.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="863">
-          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1584126665941" expanded="true" signature="1866:2415" ph="..." />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
         </state>
       </provider>
     </entry>
