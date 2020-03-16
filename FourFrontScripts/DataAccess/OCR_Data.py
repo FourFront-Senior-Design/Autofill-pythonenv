@@ -1,5 +1,27 @@
 import sys, json
-from word import Word
+
+class Word:
+    text = ""
+    x1 = 0
+    y1 = 0
+    x2 = 0
+    y2 = 0
+    
+    def __init__(self, string, X1, Y1, X2, Y2):
+        self.text = string
+        self.x1 = X1
+        self.y1 = Y1
+        self.x2 = X2
+        self.y2 = Y2
+        
+    def __str__(self):
+        return self.text + "\n\tx1: " + str(self.x1) + "\n\ty1: " + str(self.y1) + "\n\tx2: " + str(self.x2) + "\n\ty2: " + str(self.y2)
+        
+    def getText(self):
+        return self.text
+        
+    def getBoundingBox(self):
+        return self.x1, self.y1, self.x2, self.y2
 
 class OCR_Data: 
     jsonData = list()
@@ -7,6 +29,9 @@ class OCR_Data:
     backWords = list()
     fullText = list()
     
+    '''
+    Loads the json data into the OCR_Data object
+    '''
     def __init__(self, filePath1 = None, filePath2 = None):  
         # If the first filepath doesn't exist that's an issue
         if (filePath1 is None):
@@ -55,6 +80,10 @@ class OCR_Data:
             
             side = 1
             
+    '''
+    Gets a list of matching words in this order: front of stone top to bottom,
+    back of stone top to bottom
+    '''
     def getWord(self, word):
         word = word.upper()
         wordList = list()
@@ -67,12 +96,22 @@ class OCR_Data:
                 wordList.append(known)
                 
         return wordList
-        
+    
+    '''
+    Returns list(s) of words from the front and back of the stone.
+    If there is no back image the list will be either null or empty
+    '''
     def getWords(self):
         return self.frontWords, self.backWords
     
+    '''
+    Returns a list of full text annotations (all the contents)
+    '''
     def getFullText(self):
         return self.fullText
         
+    '''
+    Returns the source Json data
+    '''
     def getJsonData(self):
         return self.jsonData

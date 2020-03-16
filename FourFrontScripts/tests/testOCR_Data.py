@@ -2,7 +2,8 @@ import json, io, sys
 
 sys.path.append("C:/Python/FourFrontScripts")
 
-from OCR_Data import OCR_Data
+from DataAccess.OCR_Data import OCR_Data
+from DataAccess.HelperFunctions import formatMonths
 
 def main(argv):
     #f1 = "C:\\Python\\FourFrontScripts\\tests\\Resources\\test1.json"
@@ -18,13 +19,17 @@ def main(argv):
         for w in side:
             print(w)
         print("===========================================")
-    
-    print("===========================================")
-    
+        
     foundWords = object.getWord("Ida")
     
     for f in foundWords:
         print(f)
+
+    print("===========================================")
+
+    fullTextList = object.getFullText()
+    for text in fullTextList:
+        print(formatMonths(text))
 
 if __name__ == "__main__":
     main(sys.argv)
