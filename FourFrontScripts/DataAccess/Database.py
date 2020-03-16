@@ -1,5 +1,5 @@
 import pyodbc
-import dataTemplate
+from DataStructures import dataTemplate
 
 class AccessDatabase:
 

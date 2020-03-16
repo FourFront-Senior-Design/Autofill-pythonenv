@@ -5,11 +5,11 @@ import sys
 import json
 from copy import deepcopy
 import googleVisionOCR
-import dataTemplate
+from DataStructures import dataTemplate
 
 # Add extraction module imports here
-import dateExtraction
-import rankExtraction
+from Extraction import dateExtraction
+from Extraction import rankExtraction
 
 
 def extract(args):

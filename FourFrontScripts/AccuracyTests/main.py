@@ -1,7 +1,7 @@
 from DataAccess.Database import AccessDatabase
 from DataAccess.TempFileData import TempFileData
-from AccuracyTesting.dateAccuracy import DateAccuracy
-from AccuracyTesting.markerTypesAccuracy import MarkerAccuracy
+from AccuracyTests.dateAccuracy import DateAccuracy
+from AccuracyTests.markerTypesAccuracy import MarkerAccuracy
 import csv
 
 section = r"\\athos.cse.sdsmt.edu\FourFront\opy2\OPY2\15.2238.061 Ft. Richardson National Cemetery\Data\Section000FF"

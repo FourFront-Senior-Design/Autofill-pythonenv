@@ -1,4 +1,4 @@
-from AccuracyTesting.accuracy import Accuracy
+from AccuracyTests.accuracy import Accuracy
 
 class DateAccuracy(Accuracy):
     dkl = ['BirthDate', 'DeathDate', 'BirthDateS_D', 'DeathDateS_D',

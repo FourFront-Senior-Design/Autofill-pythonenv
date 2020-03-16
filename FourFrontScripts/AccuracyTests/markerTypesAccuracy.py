@@ -1,4 +1,4 @@
-from AccuracyTesting.accuracy import Accuracy
+from AccuracyTests.accuracy import Accuracy
 
 class MarkerAccuracy(Accuracy):
     dkl = ['MarkerType']
