@@ -1,3 +1,5 @@
-*.json
 *.pyc
-.idea/
+.idea
+FourFrontScripts/.idea
+FourFrontScripts/.vs
+FourFrontScripts/credentials
