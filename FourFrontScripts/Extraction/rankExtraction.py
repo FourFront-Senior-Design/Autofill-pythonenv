@@ -28,7 +28,6 @@ def extractRanks(data):
     
     # For each word
     for w in frontWordList + backWordList:
-
         # If the word is less than the max length of a rank (6)
         # and it matches a rank from the rank list
         if w.text in ranks and len(w.text) < 6:
@@ -36,16 +35,15 @@ def extractRanks(data):
             rankList.append(w.text)
             
     # Add ranks to rankMap
-    rankMap["Rank"] = None if len(rankList) < 1 else rankList[0]
-    rankMap["Rank2"] = None if len(rankList) < 2 else rankList[1]
-    rankMap["Rank3"] = None if len(rankList) < 3 else rankList[2]
-    rankMap["RankS_D"] = None if len(rankList) < 4 else rankList[3]
-    rankMap["Rank2S_D"] = None if len(rankList) < 5 else rankList[4]
-    rankMap["Rank3S_D"] = None if len(rankList) < 6 else rankList[5]
-    rankMap["RankS_D_2"] = None if len(rankList) < 7 else rankList[6]
-    rankMap["RankS_D_3"] = None if len(rankList) < 8 else rankList[7]
-    rankMap["RankS_D_4"] = None if len(rankList) < 9 else rankList[8]
-        
+    rankMap["Rank"] = "" if len(rankList) < 1 else rankList[0]
+    rankMap["Rank2"] = "" if len(rankList) < 2 else rankList[1]
+    rankMap["Rank3"] = "" if len(rankList) < 3 else rankList[2]
+    rankMap["RankS_D"] = "" if len(rankList) < 4 else rankList[3]
+    rankMap["Rank2S_D"] = "" if len(rankList) < 5 else rankList[4]
+    rankMap["Rank3S_D"] = "" if len(rankList) < 6 else rankList[5]
+    rankMap["RankS_D_2"] = "" if len(rankList) < 7 else rankList[6]
+    rankMap["RankS_D_3"] = "" if len(rankList) < 8 else rankList[7]
+    rankMap["RankS_D_4"] = "" if len(rankList) < 9 else rankList[8]
         
     # return all ranks found
     return rankMap
