@@ -1,5 +1,5 @@
 from DataAccess.Database import AccessDatabase
-from DataAccess.OCRData import OCRData
+from DataPreparation.OCRDataPrep import OCRDataPrep
 from DataPreparation.BestMatch import BestMatch
 import csv
 
@@ -26,7 +26,7 @@ with open(filename, 'a', newline='') as csvfile:
         backImageOCR = ""
         if record['ImageHyperlink_Back'] != None:
             backImageOCR = section + googleVision + "\\" + record['ImageHyperlink_Back'].split('\\')[1].split('.')[0]+'.json'
-        ocrData = OCRData(frontImageOCR, backImageOCR)
+        ocrData = OCRDataPrep(frontImageOCR, backImageOCR)
 
         '''
         Gets all the words from the ocr and access database

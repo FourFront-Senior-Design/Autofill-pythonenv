@@ -29,7 +29,7 @@ def month_to_number(month_string):
         m = '12'
     return m
 
-class OCRData:
+class OCRDataPrep:
 
     def __init__(self, frontPath, backPath):
         self.emptyData = dataTemplate.data_template
