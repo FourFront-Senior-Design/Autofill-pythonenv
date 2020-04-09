@@ -75,7 +75,6 @@ ranks = [
     "SMSGT",
     "SN",
     "SPC",
-    "SR",
     "SRA",
     "SSG",
     "SSGT",
