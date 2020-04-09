@@ -11,6 +11,7 @@ from DataAccess.OCR_Data import OCR_Data
 # Add extraction module imports here
 from Extraction import dateExtraction
 from Extraction import rankExtraction
+from Extraction import warExtraction
 
 
 def extract(OCR):
@@ -33,6 +34,7 @@ def extract(OCR):
         # FORMAT: record_data.update(<script_file_name.script_function_name>(OCR))
         record_data.update(dateExtraction.extract_dates(OCR))
         record_data.update(rankExtraction.extractRanks(OCR))
+        record_data.update(warExtraction.extractWars(OCR))
 
         ### END EXTRACTION CALLS ###
     return record_data
