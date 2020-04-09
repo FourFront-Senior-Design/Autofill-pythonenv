@@ -1,5 +1,6 @@
 *.pyc
 .idea
+.spyproject
 FourFrontScripts/.idea
 FourFrontScripts/.vs
 FourFrontScripts/credentials

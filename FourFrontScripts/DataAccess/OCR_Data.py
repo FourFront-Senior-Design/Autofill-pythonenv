@@ -32,7 +32,13 @@ class OCR_Data:
     '''
     Loads the json data into the OCR_Data object
     '''
-    def __init__(self, filePath1 = None, filePath2 = None):  
+    def __init__(self, filePath1 = None, filePath2 = None):
+        # Clear all pre-existing data
+        self.jsonData.clear()
+        self.frontWords.clear()
+        self.backWords.clear()
+        self.fullText.clear()
+    
         # If the first filepath doesn't exist that's an issue
         if (filePath1 is None):
             print("OCR_Data needs at least one filepath! It'll be empty!")

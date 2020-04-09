@@ -9,29 +9,7 @@ from datetime import datetime as dt
 import json
 
 from DataStructures import dataTemplate
-
-
-def get_text_annotations(extracted_data):
-    """Returns list of extracted text annotations from list of full json data"""
-    extracted_text = list()
-    for jsonData in extracted_data:
-        if jsonData.get('textAnnotations') is not None:
-            # this specifically grabs only the text annotations in the json data
-            text = jsonData.get('textAnnotations')[0].get('description')
-            extracted_text.append(text)
-    return extracted_text
-
-
-def merge_text(extracted_text):
-    """Returns merged single string from list of two strings"""
-    combined_text = str()
-    # combine text into one string
-    if len(extracted_text) == 1:
-        combined_text = extracted_text[0]
-    elif len(extracted_text) == 2:
-        combined_text = extracted_text[0] + '\n' + extracted_text[1]
-    return combined_text
-
+from DataAccess import OCR_Data
 
 def parse_regex_dates(it_dates):
     """Returns list of dates from regex iterator on dates"""
@@ -146,13 +124,13 @@ def update_date_order(dates):
     return dates
 
 
-def extract_dates(extracted_data):
+def extract_dates(OCR):
     """Returns key/value pairs of dates from .json files (given file names)"""
-        # get text annotations and combine into one string
-    extracted_text = get_text_annotations(extracted_data)
-
     # merge text into combined text string
-    combined_text = merge_text(extracted_text)
+    text_list = OCR.getFullText()
+    combined_text = text_list[0]
+    if len(text_list) > 1:
+        combined_text = combined_text + " " + text_list[1]
 
     # compile regex to select dates
     # TODO(jd): re-write this long regular expression using
