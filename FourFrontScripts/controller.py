@@ -5,14 +5,15 @@ import sys
 import json
 from copy import deepcopy
 import googleVisionOCR
-import dataTemplate
+from DataStructures import dataTemplate
+from DataAccess.OCR_Data import OCR_Data
 
 # Add extraction module imports here
-import dateExtraction
-import rankExtraction
+from Extraction import dateExtraction
+from Extraction import rankExtraction
 
 
-def extract(args):
+def extract(OCR):
     """Runs extraction scripts and returns data in a single dictionary"""
     # args is: 'full_path\\filename1.json full_path\\filename2.json'
     # filename2 is only present for uprights
@@ -21,19 +22,17 @@ def extract(args):
     # deepcopy here since we do not want to modify the single empty_data dictionary
     record_data = deepcopy(dataTemplate.data_template)
 
-    # extracted_data contains the json data from the files in the current record
-    extracted_data = get_json_data(args)
-
-    # Do not call any extraction scripts if args is empty
-    if args:
+    # Do not call any extraction scripts if OCR is empty
+    if OCR:
         ### BEGIN EXTRACTION CALLS ###
         # NOTE: Extraction scripts should only return key/value pairs for extracted data
         # NOTE: Dictionaries from extraction scripts should NOT have any blank or
         #       missing values in key/value pairs (i.e. there should be no key overlap
         #       between the various extractions scripts)
         # NOTE: Add additional extraction script calls here
-        # FORMAT: record_data.update(<script_file_name.script_function_name>(args))
-        record_data.update(dateExtraction.extract_dates(extracted_data))
+        # FORMAT: record_data.update(<script_file_name.script_function_name>(OCR))
+        record_data.update(dateExtraction.extract_dates(OCR))
+        record_data.update(rankExtraction.extractRanks(OCR))
 
         ### END EXTRACTION CALLS ###
     return record_data
@@ -61,52 +60,6 @@ def get_record_type_list(file_path):
     # sent to each extraction module/script
     return record_type_list
 
-
-def setup_args(file_list, json_path):
-    """Returns argument list for extraction scripts"""
-    arg_list = []
-    file_path1 = file_path2 = ""
-    if len(file_list) == 1:
-        file_path1 = json_path + file_list[0] + ".json"
-        arg_list.append(file_path1)
-    elif len(file_list) == 2:
-        file_path1 = json_path + file_list[0] + ".json"
-        arg_list.append(file_path1)
-        file_path2 = json_path + file_list[1] + ".json"
-        arg_list.append(file_path2)
-
-    # arg_list is: ['full_path\\filename1.json', 'full_path\\filename2.json']
-    # filename2 is only present for uprights
-
-    # pass arg_list to extraction modules
-    args = ""
-    if len(arg_list) == 1:
-        args = arg_list[0]
-    elif len(arg_list) == 2:
-        args = arg_list[0] + " " + arg_list[1]
-    # args is: 'full_path\\filename1.json full_path\\filename2.json'
-    # filename2 is only present for uprights
-    return args
-
-def get_json_data(files):
-    """Returns list of full json data from list of json file names"""
-    # iterate through input files and append data to extracted_data
-    extracted_data = list()
-    try:
-        # split at first '.json ' in files string, max 1 time
-        flist = files.split('.json ', 1)
-        # check for .json extension on first item in list
-        if not flist[0].endswith('.json'):
-            # add .json extension
-            flist[0] += '.json'
-        for f in flist:
-            with open(f, 'r') as file:
-                data = json.load(file)
-                extracted_data.append(data)
-    except:
-        pass
-    return extracted_data
-
 def main(argv):
     # Get file path
     file_path = sys.argv[1]
@@ -125,11 +78,16 @@ def main(argv):
         # file_list is: ['filename1'] or ['filename1', 'filename2']
         file_list = line.split()
 
-        # set up arguments for extraction scripts (file path/names)
-        args = setup_args(file_list, json_path)
+        file_1_path = json_path + file_list[0] + ".json"
+        file_2_path = None
+        if len(file_list) > 1:
+            file_2_path = json_path + file_list[1] + ".json"
+        
+        # Create OCR object
+        OCR = OCR_Data(file_1_path, file_2_path)
 
         # extract data / run extraction scripts
-        record_data = extract(args)
+        record_data = extract(OCR)
 
         # write output record_data to .tmp files
         # only write the filename for the primary (for uprights)

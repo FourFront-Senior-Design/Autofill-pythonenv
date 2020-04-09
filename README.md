@@ -1,2 +1,2 @@
-# pythonenv
-Repository to store the python installation and FourFront python auto-fill scripts
+# Database Auto-fill Software Backend
+Contains the python environment to run the scripts and the backend scripts for the Database Auto-fill Software.
