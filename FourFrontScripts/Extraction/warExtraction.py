@@ -26,14 +26,20 @@ def extractWars(data):
     # Naive approach: Search the string for every war
 
     # Get all words from data object
-    fullText = data.getFullText()
+    sides = data.getFullText()
     
+    fullText = ""
+
+    for s in sides:
+        fullText += s
+
     warList = list()
     
     # For each word
     for w in wars:
-        # If the key matches a with the string
-        if re.match(w, fullText):
+        # If the key matches with the string
+        matches = re.search(w, fullText)
+        if matches is not None:
             # Insert into list
             warList.append(wars[w])
             
@@ -49,6 +55,6 @@ def extractWars(data):
     warMap["WarS_D_2"] = "" if len(warList) < 9 else warList[8]
     warMap["WarS_D_3"] = "" if len(warList) < 10 else warList[9]
     warMap["WarS_D_4"] = "" if len(warList) < 11 else warList[10]
-        
+    
     # return all wars found
     return warMap
