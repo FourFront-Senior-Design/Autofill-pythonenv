@@ -28,40 +28,40 @@ def extractWars(data):
     # Get all words from data object
     sides = data.getFullText()
     
-    fullText = ""
+    frontWarList = list()
+    backWarList = list()
+    side = 0
 
     for s in sides:
-        fullText += s
+        # For each key in wars
+        for w in wars:
+            searchString = "[\s\n,.]" + w + "[\s\n,.]"
+        
+            # If the key matches with the string
+            matches = re.search(searchString, s)
+            if matches is not None:
+                # Insert into list
+                if side == 0:
+                    frontWarList.append(wars[w])
+                else:
+                    backWarList.append(wars[w])
+        
+        side = 1
 
-    warList = list()
     
-    print("------------")
-    
-    # For each key in wars
-    for w in wars:
-        searchString = "\s" + w + "\s"
-    
-        # If the key matches with the string
-        matches = re.search(searchString, fullText)
-        if matches is not None:
-            # Insert into list
-            warList.append(wars[w])
-            print(w, wars[w])
-            
+                
     # Add wars to warMap
-    warMap["War"] = "" if len(warList) < 1 else warList[0]
-    warMap["War2"] = "" if len(warList) < 2 else warList[1]
-    warMap["War3"] = "" if len(warList) < 3 else warList[2]
-    warMap["War4"] = "" if len(warList) < 4 else warList[3]
-    warMap["WarS_D"] = "" if len(warList) < 5 else warList[4]
-    warMap["War2S_D"] = "" if len(warList) < 6 else warList[5]
-    warMap["War3S_D"] = "" if len(warList) < 7 else warList[6]
-    warMap["War4S_D"] = "" if len(warList) < 8 else warList[7]
-    warMap["WarS_D_2"] = "" if len(warList) < 9 else warList[8]
-    warMap["WarS_D_3"] = "" if len(warList) < 10 else warList[9]
-    warMap["WarS_D_4"] = "" if len(warList) < 11 else warList[10]
-    
-    print(warMap)
-    
+    warMap["War"] = "" if len(frontWarList) < 1 else frontWarList[0]
+    warMap["War2"] = "" if len(frontWarList) < 2 else frontWarList[1]
+    warMap["War3"] = "" if len(frontWarList) < 3 else frontWarList[2]
+    warMap["War4"] = "" if len(frontWarList) < 4 else frontWarList[3]
+    warMap["WarS_D"] = "" if len(backWarList) < 1 else backWarList[0]
+    warMap["War2S_D"] = "" if len(backWarList) < 2 else backWarList[1]
+    warMap["War3S_D"] = "" if len(backWarList) < 3 else backWarList[2]
+    warMap["War4S_D"] = "" if len(backWarList) < 4 else backWarList[3]
+    warMap["WarS_D_2"] = "" if len(backWarList) < 5 else backWarList[4]
+    warMap["WarS_D_3"] = "" if len(backWarList) < 6 else backWarList[5]
+    warMap["WarS_D_4"] = "" if len(backWarList) < 7 else backWarList[6]
+        
     # return all wars found
     return warMap

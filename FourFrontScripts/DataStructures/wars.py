@@ -19,7 +19,6 @@ wars = {
 	'WORLD WAR II': 'II',
 	'WW II': 'II',
 	'WWII': 'II',
-	'II': 'II',
 	'KOREA': 'KO',
 	'KO': 'KO',
 	'VIETNAM': 'VN',
