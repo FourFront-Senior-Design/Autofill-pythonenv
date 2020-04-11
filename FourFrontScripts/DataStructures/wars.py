@@ -3,7 +3,6 @@ wars = {
 	'REV WAR': 'RV',
 	'RV': 'RV',
 	'INDIAN WARS': 'IN',
-	'IN': 'IN',
 	'WAR OF 1812': '18',
 	'MEXICAN WAR': 'MX',
 	'MX': 'MX',
