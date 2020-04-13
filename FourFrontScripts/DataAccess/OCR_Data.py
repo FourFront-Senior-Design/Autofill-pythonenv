@@ -1,4 +1,4 @@
-import sys, json
+import sys, json, os
 
 class Word:
     text = ""
@@ -46,9 +46,10 @@ class OCR_Data:
         
         try:
             with open(filePath1, 'r') as file:
-                # Get the first file data
-                data = json.load(file)
-                self.jsonData.append(data)
+                if os.stat(filePath1).st_size > 0:
+                    # Get the first file data
+                    data = json.load(file)
+                    self.jsonData.append(data)
         except:
             print("Error loading first json file: ", sys.exc_info()[0])
             raise
@@ -56,9 +57,10 @@ class OCR_Data:
         if (filePath2 is not None):
             try:
                 with open(filePath2, 'r') as file:
-                    # Append the second json file data
-                    data = json.load(file)
-                    self.jsonData.append(data)
+                    if os.stat(filePath2).st_size > 0:
+                        # Append the second json file data
+                        data = json.load(file)
+                        self.jsonData.append(data)
             except:
                 print("Error loading second json file: ", sys.exc_info()[0])
                 raise
