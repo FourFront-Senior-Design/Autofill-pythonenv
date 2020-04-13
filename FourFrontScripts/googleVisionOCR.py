@@ -39,7 +39,7 @@ def OCR(filePath):
         nameParts = f.split('.')
         outFilePath = outputPath + nameParts[0] + ".json"
 
-        if nameParts[1] == "jpg":
+        if nameParts[1].lower() == "jpg":
             if not exists(outFilePath):
                 currentImagePath = imagePath + "\\" + f
 
