@@ -21,8 +21,6 @@ def extractRanks(data):
     'RankS_D_4': ''
     }
     
-    # Naive approach: Search the ranks map for every word in the string less than the max rank size (6)
-
     # Get all words from data object
     sides = data.getFullText()
     
@@ -33,20 +31,29 @@ def extractRanks(data):
     for s in sides:
         # For each key in wars
         for r in ranks:
-            searchString = "[\s\n,.]" + r + "[\s\n,.]"
-        
+            # If there is a space in the rank, replace the space with a \s for regex
+            if " " in r:
+                parts = r.split()
+                searchString = "[\s\n,.]" + parts[0] + "\s" + parts[1] + "[\s\n,.]"
+            else:
+                searchString = "[\s\n,.]" + r + "[\s\n,.]"
+
             # If the key matches with the string
             matches = re.finditer(searchString, s)
+
             if matches is not None:
                 for m in matches:
+                    print(searchString, r)
                     # Insert into list
                     if side == 0:
                         frontRankList.append(r)
                     else:
                         backRankList.append(r)
-            
+
+                    s = s.replace(r, "")
+
         side = 1
-            
+    
     # Add ranks to rankMap
     rankMap["Rank"] = "" if len(frontRankList) < 1 else frontRankList[0]
     rankMap["Rank2"] = "" if len(frontRankList) < 2 else frontRankList[1]

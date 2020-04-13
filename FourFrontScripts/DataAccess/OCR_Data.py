@@ -85,6 +85,8 @@ class OCR_Data:
                         self.frontWords.append(newWord)
                     else:
                         self.backWords.append(newWord)
+            else:
+                self.fullText.append("")
             
             side = 1
             
