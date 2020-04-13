@@ -43,7 +43,6 @@ def extractRanks(data):
 
             if matches is not None:
                 for m in matches:
-                    print(searchString, r)
                     # Insert into list
                     if side == 0:
                         frontRankList.append(r)
