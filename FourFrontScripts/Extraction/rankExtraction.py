@@ -2,6 +2,8 @@ from DataAccess.OCR_Data import OCR_Data
 from DataAccess.OCR_Data import Word
 from DataStructures.ranks import ranks
 
+import re
+
 '''
 Creates a map of Rank field to rank values that matches the database and fills that map with
 ranks found in the given data object.
@@ -19,31 +21,48 @@ def extractRanks(data):
     'RankS_D_4': ''
     }
     
-    # Naive approach: Search the ranks map for every word in the string less than the max rank size (6)
-
     # Get all words from data object
-    frontWordList, backWordList = data.getWords()
+    sides = data.getFullText()
     
-    rankList = list()
+    frontRankList = list()
+    backRankList = list()
+    side = 0
+
+    for s in sides:
+        # For each key in wars
+        for r in ranks:
+            # If there is a space in the rank, replace the space with a \s for regex
+            if " " in r:
+                parts = r.split()
+                searchString = "[\s\n,.]" + parts[0] + "\s" + parts[1] + "[\s\n,.]"
+            else:
+                searchString = "[\s\n,.]" + r + "[\s\n,.]"
+
+            # If the key matches with the string
+            matches = re.finditer(searchString, s)
+
+            if matches is not None:
+                for m in matches:
+                    # Insert into list
+                    if side == 0:
+                        frontRankList.append(r)
+                    else:
+                        backRankList.append(r)
+
+                    s = s.replace(r, "")
+
+        side = 1
     
-    # For each word
-    for w in frontWordList + backWordList:
-        # If the word is less than the max length of a rank (6)
-        # and it matches a rank from the rank list
-        if w.text in ranks and len(w.text) < 6:
-            # Insert into list
-            rankList.append(w.text)
-            
     # Add ranks to rankMap
-    rankMap["Rank"] = "" if len(rankList) < 1 else rankList[0]
-    rankMap["Rank2"] = "" if len(rankList) < 2 else rankList[1]
-    rankMap["Rank3"] = "" if len(rankList) < 3 else rankList[2]
-    rankMap["RankS_D"] = "" if len(rankList) < 4 else rankList[3]
-    rankMap["Rank2S_D"] = "" if len(rankList) < 5 else rankList[4]
-    rankMap["Rank3S_D"] = "" if len(rankList) < 6 else rankList[5]
-    rankMap["RankS_D_2"] = "" if len(rankList) < 7 else rankList[6]
-    rankMap["RankS_D_3"] = "" if len(rankList) < 8 else rankList[7]
-    rankMap["RankS_D_4"] = "" if len(rankList) < 9 else rankList[8]
+    rankMap["Rank"] = "" if len(frontRankList) < 1 else frontRankList[0]
+    rankMap["Rank2"] = "" if len(frontRankList) < 2 else frontRankList[1]
+    rankMap["Rank3"] = "" if len(frontRankList) < 3 else frontRankList[2]
+    rankMap["RankS_D"] = "" if len(backRankList) < 1 else backRankList[0]
+    rankMap["Rank2S_D"] = "" if len(backRankList) < 2 else backRankList[1]
+    rankMap["Rank3S_D"] = "" if len(backRankList) < 3 else backRankList[2]
+    rankMap["RankS_D_2"] = "" if len(backRankList) < 4 else backRankList[3]
+    rankMap["RankS_D_3"] = "" if len(backRankList) < 5 else backRankList[4]
+    rankMap["RankS_D_4"] = "" if len(backRankList) < 6 else backRankList[5]
         
     # return all ranks found
     return rankMap
