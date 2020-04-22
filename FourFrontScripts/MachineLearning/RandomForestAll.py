@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score
 import pandas as pd
 import numpy as np
 
-class DecisionTreeAll:
+class RandomForestAll:
     _dataset = r'C:/Python/FourFrontScripts/TestData/data.csv'
 
     # Reads the data
