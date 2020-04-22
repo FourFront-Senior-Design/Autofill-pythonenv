@@ -6,8 +6,8 @@ The Database Auto-fill Software uses python scripts in the backend to extract te
 * [FourFront scripts](https://github.com/FourFront-Senior-Design/Autofill-pythonenv/tree/master/FourFrontScripts)
 
 ### Setup
-* Clone the repository in th C drive (C:\)
+* Clone the repository in the C drive (C:\)
 * Rename the cloned repository to "Python" so that it's path is C:\Python
-* Follow the set-up steps in [FourFrontScripts](https://github.com/FourFront-Senior-Design/Autofill-pythonenv/tree/master/FourFrontScripts) folder to run the scripts
+* Follow the steps in [FourFrontScripts](https://github.com/FourFront-Senior-Design/Autofill-pythonenv/tree/master/FourFrontScripts) folder to set-up the scripts
 * Setup the [Autofill-frontend](https://github.com/FourFront-Senior-Design/Autofill-frontend) to run the scripts
 * Use the [Data Entry Form](https://github.com/FourFront-Senior-Design/DataEntryForm) to see the autofilled fields
