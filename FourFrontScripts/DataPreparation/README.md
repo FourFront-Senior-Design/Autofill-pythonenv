@@ -9,4 +9,6 @@ The columns of the table contained:
 * **coordinates**: The (x,y) coordinates of the rectangular polygon
 * **category**: The column in which the word belongs in the database
 
+The prepared training data is saved in the [data.csv](https://github.com/FourFront-Senior-Design/Autofill-pythonenv/blob/master/FourFrontScripts/TestData/data.csv) file.
+
 Used the [**min-cost max flow algorithm**](https://www.hackerearth.com/practice/algorithms/graphs/minimum-cost-maximum-flow/tutorial/) to find the column of the word that was extracted from the OCR.
