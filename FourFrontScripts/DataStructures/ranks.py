@@ -1,3 +1,4 @@
+# A list of all the ranks
 ranks = [
     "AVN CADET",
     "BRIG GEN",

@@ -1,3 +1,4 @@
+# A list of all the wars
 wars = {
 	'REVOLUTIONARY WAR': 'RV',
 	'REV WAR': 'RV',

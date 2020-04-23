@@ -1,3 +1,4 @@
+# The data template that will store the extracted texts
 data_template = {
     'GravesiteNumber': '',
     'MarkerType': '',
