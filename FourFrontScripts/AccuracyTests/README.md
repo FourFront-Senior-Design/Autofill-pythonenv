@@ -11,8 +11,8 @@ To test the accuracy of the extracted test, we look at three possibilities:
 
 The accuracy was tested on the fields that fell under the **Filled** categority using the [**Levenshtein Distance**](https://en.wikipedia.org/wiki/Levenshtein_distance). The accuracy is given by:
 ```
-difference = levenshteinDistance(autofillField, msAccessField)
-accuracy  = (len(msAccessField) - diff) / len(msAccessField)
+difference = levenshteinDistance(autofill_Field, msAccess_Field)
+accuracy  = (len(msAccess_Field) - difference) / len(msAccess_Field)
 ```
 
 ### Run
