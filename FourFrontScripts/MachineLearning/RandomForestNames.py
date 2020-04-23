@@ -1,6 +1,7 @@
-from MachineLearning.DecisionTreeAll import DecisionTreeAll
+# Random forest classifier to predict names only
+from MachineLearning.RandomForestAll import RandomForestAll
 
-class DecisionTreeNames(DecisionTreeAll):
+class RandomForestNames(RandomForestAll):
 
     def __init__(self):
         super().__init__()

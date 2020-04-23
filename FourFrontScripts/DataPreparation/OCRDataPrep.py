@@ -1,3 +1,4 @@
+#OCR data object specifically for the data prep algoirithm
 from DataStructures import dataTemplate
 import json
 

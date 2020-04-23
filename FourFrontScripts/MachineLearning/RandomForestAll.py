@@ -1,4 +1,6 @@
-from sklearn.tree import DecisionTreeClassifier
+# random forest classifier to predict categories (columns)
+
+from sklearn.ensemble import RandomForestClassifier
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -30,7 +32,7 @@ class RandomForestAll:
 
     # Makes the decision tree
     def __makeModel(self):
-        self.__dt = DecisionTreeClassifier(max_depth = 10, random_state = 1)
+        self.__dt = RandomForestClassifier(n_estimators=200, max_depth=3, random_state=0)
         self.__dt.fit(self.__x_train, self.__y_train)
 
     # Internal Use Only: Used to get the accuracy of the model

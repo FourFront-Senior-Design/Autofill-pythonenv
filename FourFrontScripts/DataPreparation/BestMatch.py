@@ -2,6 +2,7 @@
 Creates the best match between the ocr words and the database words
 to minimize the edit distance.
 This will help label the OCR words to the correct column in the database
+Algorithm: min-cost max-flow algorithm
 '''
 import queue
 
