@@ -7,10 +7,10 @@ from AccuracyTests.wallIDAccuracy import WallIDAccuracy
 from AccuracyTests.rankAccuracy import RankAccuracy
 import csv
 
-section = r"C:\Users\7405148\Downloads\FilledCemeterySections\FilledCemeterySections\Test\Florida_Section110"
-database = r"\FNC_Section110_be.accdb"
+section = r"" #Add path to the section folder here
+database = [f for f in os.listdir(section) if f.endswith('_be.accdb')][0]
 tempFiles = r"\tempFiles"
-accessDb = AccessDatabase(section + database)
+accessDb = AccessDatabase(section + "\\" + database)
 autofill = TempFileData(section + tempFiles)
 
 filename = r"C:\Python\FourFrontScripts\AccuracyTests\AccuracyResults" + database.split('.')[0] + ".txt"
