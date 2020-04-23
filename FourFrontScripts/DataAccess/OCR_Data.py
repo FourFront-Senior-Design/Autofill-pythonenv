@@ -1,3 +1,4 @@
+# OCR_Data reads the json files in the GoogleVision folder of a given section
 import sys, json, os
 
 class Word:
@@ -7,12 +8,17 @@ class Word:
     x2 = 0
     y2 = 0
     
-    def __init__(self, string, X1, Y1, X2, Y2):
+    def __init__(self, string, X1, Y1, X2, Y2, X3, Y3, X4, Y4):
         self.text = string
         self.x1 = X1
         self.y1 = Y1
         self.x2 = X2
         self.y2 = Y2
+        self.x3 = X3
+        self.y3 = Y3
+        self.x4 = X4
+        self.y4 = Y4
+
         
     def __str__(self):
         return self.text + "\n\tx1: " + str(self.x1) + "\n\ty1: " + str(self.y1) + "\n\tx2: " + str(self.x2) + "\n\ty2: " + str(self.y2)
@@ -21,7 +27,7 @@ class Word:
         return self.text
         
     def getBoundingBox(self):
-        return self.x1, self.y1, self.x2, self.y2
+        return [self.x1, self.y1, self.x2, self.y2, self.x3, self.y3, self.x4, self.y4]
 
 class OCR_Data: 
     jsonData = list()
@@ -78,8 +84,12 @@ class OCR_Data:
                     newWord = Word(textAnnotations[i].get('description'),
                         textAnnotations[i].get('boundingPoly').get('vertices')[0].get('x'),
                         textAnnotations[i].get('boundingPoly').get('vertices')[0].get('y'),
+                        textAnnotations[i].get('boundingPoly').get('vertices')[1].get('x'),
+                        textAnnotations[i].get('boundingPoly').get('vertices')[1].get('y'),
                         textAnnotations[i].get('boundingPoly').get('vertices')[2].get('x'),
-                        textAnnotations[i].get('boundingPoly').get('vertices')[2].get('y'))
+                        textAnnotations[i].get('boundingPoly').get('vertices')[2].get('y'),
+                        textAnnotations[i].get('boundingPoly').get('vertices')[3].get('x'),
+                        textAnnotations[i].get('boundingPoly').get('vertices')[3].get('y'))
                         
                     if (side is 0):
                         self.frontWords.append(newWord)
@@ -112,7 +122,7 @@ class OCR_Data:
     If there is no back image the list will be either null or empty
     '''
     def getWords(self):
-        return self.frontWords, self.backWords
+        return (self.frontWords, self.backWords)
     
     '''
     Returns a list of full text annotations (all the contents)
@@ -125,3 +135,13 @@ class OCR_Data:
     '''
     def getJsonData(self):
         return self.jsonData
+
+    def getImageLoc(self, w, coordinate):
+        (f, b) = self.getWords()
+        word = Word(w, coordinate[0], coordinate[1], coordinate[2],
+                    coordinate[3], coordinate[4], coordinate[5], coordinate[6], coordinate[7])
+
+        if word in f:
+            return "front"
+
+        return "back"
