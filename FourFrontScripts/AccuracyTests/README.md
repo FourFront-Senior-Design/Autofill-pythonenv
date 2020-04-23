@@ -9,7 +9,9 @@ To test the accuracy of the extracted test, we look at three possibilities:
 2. **Missing**: The Autofill **missed** (empty) the field, while the MS Access database had something filled for that field.
 3. **Incorrect**: The Autofill filled it in a field that is empty is the MS Access database so it is definitely **incorrect**.
 
-The accuracy was tested on the fields that fell under the **Filled** categority using the [**Levenshtein Distance**](https://en.wikipedia.org/wiki/Levenshtein_distance). The accuracy is given by:
+##### Accuracy
+The accuracy was tested on the fields that fell under the **Filled category** using the [**Levenshtein Distance**](https://en.wikipedia.org/wiki/Levenshtein_distance). 
+The accuracy is given by:
 ```
 difference = levenshteinDistance(autofill_Field, msAccess_Field)
 accuracy  = (len(msAccess_Field) - difference) / len(msAccess_Field)
