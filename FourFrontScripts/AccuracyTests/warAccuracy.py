@@ -1,17 +1,14 @@
 from AccuracyTests.accuracy import Accuracy
 
-class DateAccuracy(Accuracy):
-    birth = ['BirthDate', 'BirthDateS_D', 'BirthDateS_D_2', 'BirthDateS_D_3',
-             'BirthDateS_D_4', 'BirthDateS_D_5', 'BirthDateS_D_6']
-
-    death = ['DeathDate', 'DeathDateS_D', 'DeathDateS_D_2', 'DeathDateS_D_3',
-             'DeathDateS_D_4', 'DeathDateS_D_5', 'DeathDateS_D_6']
+class WarAccuracy(Accuracy):
+    war = [ 'War', 'War2', 'War3', 'War4','WarS_D', 'War2S_D',
+              'War3S_D', 'War4S_D', 'WarS_D_2', 'WarS_D_3', 'WarS_D_4']
 
     def __init__(self, access, autofill):
         super().__init__(access, autofill)
 
 
-    def getRecordAcc(self, index, array):
+    def getRecordAcc(self, index):
         autofillRecord = self.autofill.getRecord(index)
         accessRecord = self.access.getRecord(index)
 
@@ -19,28 +16,26 @@ class DateAccuracy(Accuracy):
         missedPerRecord = 0
         incorrectPerRecord = 0
         avgPerRecord = 0
-        for i in range(len(array)):
-            autofillDate = autofillRecord[array[i]]
-            accessDate = accessRecord[array[i]]
+        for i in range(len(self.war)):
+            autofillWar = autofillRecord[self.war[i]]
+            accessWar = accessRecord[self.war[i]]
 
-            if autofillDate == None:
-                autofillDate = ""
+            if autofillWar == None:
+                autofillWar = ""
 
-            if accessDate == None:
-                accessDate = ""
+            if accessWar == None:
+                accessWar = ""
 
-            if autofillDate != "" and accessDate != "":
-                diff = self.levenshteinDistance(autofillDate, accessDate)
-                acc = (len(accessDate) - diff)/len(accessDate)
-                if acc < 0:
-                    print("neg")
+            if autofillWar != "" and accessWar != "":
+                diff = self.levenshteinDistance(autofillWar, accessWar)
+                acc = (len(accessWar) - diff)/len(accessWar)
                 avgPerRecord = avgPerRecord + acc
                 filledPerRecord = filledPerRecord + 1
 
-            if autofillDate == "" and accessDate != "":
+            if autofillWar == "" and accessWar != "":
                 missedPerRecord = missedPerRecord + 1
 
-            if autofillDate != "" and accessDate == "":
+            if autofillWar != "" and accessWar == "":
                 incorrectPerRecord = incorrectPerRecord + 1
 
         if filledPerRecord != 0:
@@ -51,18 +46,15 @@ class DateAccuracy(Accuracy):
             missedPerRecord = missedPerRecord / (filledPerRecord + missedPerRecord + incorrectPerRecord)
         return (avgPerRecord, missedPerRecord, filledPerRecord, incorrectPerRecord)
 
-    def getAccuracy(self, array):
+    def getAccuracy(self):
         numRecords = self.autofill.getNumRecords()
         avg = 0
         missed = 0
         filled = 0
         incorrect = 0
-        print(numRecords)
 
         for i in range(numRecords):
-            (avgPerRecord, missedPerRecord, filledPerRecord, incorrectPerRecord) = self.getRecordAcc(i, array)
-            if avgPerRecord > 1:
-                print("Data: ", avgPerRecord)
+            (avgPerRecord, missedPerRecord, filledPerRecord, incorrectPerRecord) = self.getRecordAcc(i)
             avg = avg + avgPerRecord
             missed = missed + missedPerRecord
             filled = filled + filledPerRecord
@@ -74,9 +66,3 @@ class DateAccuracy(Accuracy):
         incorrect = incorrect / numRecords
 
         return [avg, missed, filled, incorrect]
-
-    def getBirthDateAcc(self):
-        return self.getAccuracy(self.birth)
-
-    def getDeathDateAcc(self):
-        return self.getAccuracy(self.death)

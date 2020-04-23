@@ -1,3 +1,5 @@
+# Reads the temp files with the extracted texts in the section
+
 import os
 
 class TempFileData:

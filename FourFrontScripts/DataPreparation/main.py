@@ -1,22 +1,22 @@
 from DataAccess.Database import AccessDatabase
 from DataPreparation.OCRDataPrep import OCRDataPrep
 from DataPreparation.BestMatch import BestMatch
-import csv
+import csv, os
 
-#Name of the section
-section = r""
-#Names of the backend database in this section
-database = r"\.accdb"
-googleVision =  r"\GoogleVisionData"
+section = r"" #Add the name of the section
+database = [f for f in os.listdir(section) if f.endswith('_be.accdb')][0]
+googleVision = r"\GoogleVisionData"
 filename = "C:/Python/FourFrontScripts/TestData/data.csv"
 
 #Connects to the MS Access Database
-accessDb = AccessDatabase(section + database)
+accessDb = AccessDatabase(section + "\\" + database)
 
-with open(filename, 'a', newline='') as csvfile:
-   # columns = ["word", "markerType", "ImageLocation", "x1", "y1", "x2", "y2", "x3", "y3", "x4", "y4", "category"]
+# change from 'a' to 'w' on the first run
+with open(filename, 'a', newline='',  encoding='utf-8') as csvfile:
     writer = csv.writer(csvfile)
-   # writer.writerow(columns)
+    #Note: creates the column name header
+    #columns = ["word", "markerType", "ImageLocation", "x1", "y1", "x2", "y2", "x3", "y3", "x4", "y4", "category"]
+    #writer.writerow(columns)
 
     for i in range(accessDb.getNumRecords()):
         record = accessDb.getRecord(i)
@@ -63,4 +63,5 @@ with open(filename, 'a', newline='') as csvfile:
                 x3, y3 = coordinates[2]['x'], coordinates[2]['y']
                 x4, y4 = coordinates[3]['x'], coordinates[3]['y']
                 row = [item[0], accessDb.getMarkerType(i), location, x1, y1, x2, y2, x3, y3, x4, y4, item[1]]
+                print(row)
                 writer.writerow(row)

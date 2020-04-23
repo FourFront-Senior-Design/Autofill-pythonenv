@@ -1,36 +1,35 @@
 from AccuracyTests.accuracy import Accuracy
 
-class MarkerAccuracy(Accuracy):
+class WallIDAccuracy(Accuracy):
 
     def __init__(self, access, autofill):
         super().__init__(access, autofill)
 
     def getRecordAcc(self, index):
-        autofillRecord = self.autofill.getRecord(index)
         accessRecord = self.access.getRecord(index)
         filledPerRecord = 0
         missedPerRecord = 0
         avgPerRecord = 0
         incorrectPerRecord = 0
 
-        autofillMarker = autofillRecord['MarkerType']
-        accessMarker = accessRecord['MarkerType']
+        autofillWallID = "0"
+        accessWallID = accessRecord['Wall']
 
-        if autofillMarker == None:
-            autofillMarker = ""
+        if autofillWallID == None:
+            autofillWallID = ""
 
-        if accessMarker == None:
-            accessMarker = ""
+        if accessWallID == None:
+            accessWallID = ""
 
-        if autofillMarker != "" and accessMarker != "":
-            diff = self.levenshteinDistance(autofillMarker, accessMarker)
-            avgPerRecord = (len(accessMarker) - diff) / len(accessMarker)
+        if autofillWallID != "" and accessWallID != "":
+            diff = self.levenshteinDistance(autofillWallID, accessWallID)
+            avgPerRecord = (len(accessWallID) - diff) / len(accessWallID)
             filledPerRecord = 1
 
-        if accessMarker != "" and autofillMarker == "":
+        if accessWallID != "" and autofillWallID == "":
             missedPerRecord = 1
 
-        if accessMarker == "" and autofillMarker != "":
+        if accessWallID == "" and autofillWallID != "":
             incorrectPerRecord = 1
 
         return (avgPerRecord, missedPerRecord, filledPerRecord, incorrectPerRecord)
