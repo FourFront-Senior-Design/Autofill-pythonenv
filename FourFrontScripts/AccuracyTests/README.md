@@ -19,7 +19,7 @@ accuracy  = (len(msAccess_Field) - difference) / len(msAccess_Field)
 
 ### Run
 1. Select a pre-filled section
-2. Run the autofill software on this section
+2. Run the ```controller.py``` on this section. Make sure the "tempFiles/" folder is created for the section.
 3. Add the section in the ```main.py``` in the accuracy tests 
 4. Run the ```main.py``` to generate the accuracy results
 4. The result for the section is in the [AccuracyResults](https://github.com/FourFront-Senior-Design/Autofill-pythonenv/tree/accuracyTests/FourFrontScripts/AccuracyTests/AccuracyResults) folder
