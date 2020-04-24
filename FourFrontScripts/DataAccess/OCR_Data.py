@@ -1,12 +1,29 @@
 # OCR_Data reads the json files in the GoogleVision folder of a given section
 import sys, json, os
 
+'''
+The word object is used in the OCR_Data object to track individual words and their 
+locations in the image. Words are created when an OCR_Data object is created, 
+and contain information about the words on the stone.
+
+text: A string containing the contents of the word
+
+There are a few functions that can be used to get information from a word:
+
+getText(): returns text.
+
+getBoundingBox(): returns a tuple of x1, y1, x2, y2, x3, y3, x4, y4.
+'''
 class Word:
     text = ""
     x1 = 0
     y1 = 0
     x2 = 0
     y2 = 0
+    x3 = 0
+    y3 = 0
+    x4 = 0
+    y4 = 0
     
     def __init__(self, string, X1, Y1, X2, Y2, X3, Y3, X4, Y4):
         self.text = string
@@ -18,7 +35,6 @@ class Word:
         self.y3 = Y3
         self.x4 = X4
         self.y4 = Y4
-
         
     def __str__(self):
         return self.text + "\n\tx1: " + str(self.x1) + "\n\ty1: " + str(self.y1) + "\n\tx2: " + str(self.x2) + "\n\ty2: " + str(self.y2)
@@ -29,6 +45,34 @@ class Word:
     def getBoundingBox(self):
         return [self.x1, self.y1, self.x2, self.y2, self.x3, self.y3, self.x4, self.y4]
 
+    
+'''
+The OCR_Data object is a class which sits between the developers and the json files returned 
+from Google Vision. Its constructor takes either one or two paths to json files from Google Vision
+and reads data from those to fill out various data structures:
+
+jsonData: a list of either one or two elements, each the full json data from a side 
+of the stone. If the stone is an upright you should see two elements in this list.
+
+frontWords: a list of all words (see word object for more documentation) from the front of the stone.
+
+backWords: a list of words from the back of the stone.
+
+fullText: a list of either one or two strings, each the string of text extracted from each 
+side of the stone. If the stone is an upright you should see two elements in this list.
+
+
+OCR_Data provides a few functions to help interact with this data:
+getWord(word): This function takes a string and searches the words lists to find it. 
+It returns a word (see word object for more documentation).
+
+getWords(): This returns a tuple of frontWords, backWords.
+
+getFullText(): This returns fullText.
+
+getJsonData(): This returns jsonData.
+
+'''
 class OCR_Data: 
     jsonData = list()
     frontWords = list()
